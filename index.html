@@ -4,13 +4,44 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title> Rock Paper Scissors || Kiriana Brown</title>
+    <title> Paper Scissors Rock || Kiriana Brown</title>
     <meta name="description" content="Interactive Rock, Paper, Scissors game created by Kiriana Brown using Vanilla Javascript.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- ICONS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link rel="stylesheet" href="main.css">
 </head>
 
 <body>
+    <div class="container">
+        <!-- HEADER -->
+        <header class="header">
+            <h1> Paper Scissors Rock</h1>
+            <button id="restart" class="restart-btn">Restart Game</button>
+            <div id="score" class="score">
+                <p> Player: 0</p>
+                <p> Computer: 0</p>
+            </div>
+        </header>
+
+        <!-- SELECTION -->
+        <h2> Make your selection</h2>
+        <div class="choices">
+            <i id="paper" class="choice far fa-hand-paper"></i>
+            <i id="scissors" class="choice far fa-hand-scissors"></i>
+            <i id="rock" class="choice far fa-hand-rock"></i>
+        </div>
+
+        <!-- MODAL -->
+        <div class="modal">
+            <div id="result" class="modal-content">
+                <h1> You Win </h1>
+                <i class="far fa-hand-rock"></i>
+                <p> Computer Chose Rock</p>
+            </div>
+        </div>
+
+    </div>
 
     <script src="app.js"></script>
 </body>
