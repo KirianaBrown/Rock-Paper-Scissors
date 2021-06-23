@@ -1,5 +1,6 @@
 import { elements, setActionButtons } from "./views/base";
 import { renderScore } from "./views/scores";
+import * as resultsView from "./views/results";
 import Computer from "./models/Computer";
 
 // IMPORT STYLESHEETS
@@ -19,6 +20,10 @@ const state = {
 const gameController = () => {
     if (state.gameIsPlaying) {
         // 1. Get player selection
+        const playerSelection = options[state.playerSelection];
+
+        resultsView.renderPending(playerSelection);
+
         // 2. Get computer selection
         state.computerSelection = Computer();
         // 3. Compare scores
@@ -27,7 +32,7 @@ const gameController = () => {
             state.computerSelection
         );
         // 4. If player wins add 5 to total
-        console.log(state.playerSelection, state.computerSelection, state.result);
+
         // 5. If computer wins then remove 1 from total
         if (state.result === "draw") {
             return;
