@@ -5,6 +5,9 @@ export const elements = {
     paper: document.querySelector(".paper"),
     scissors: document.querySelector(".scissors"),
     score: document.querySelector(".container-score--score"),
+    container_controls: document.querySelector(".container-controls"),
+    container_pending: document.querySelector(".container-pending"),
+    container_results: document.querySelector(".container-results"),
 };
 
 export const setActionButtons = (isPlaying) => {
