@@ -1,7 +1,7 @@
 %game-button {
     cursor: pointer;
     border: none;
-    background-color: blueviolet;
+    background-color: $color-violet;
     padding: 1rem 4rem;
     border-radius: $border-radius;
     color: $color-white;
@@ -26,7 +26,7 @@
     }
     &--rules {
         @extend %game-button;
-        background-color: $color-blue-dark;
+        background-color: transparent;
         color: $color-white;
         border: 1px solid $color-white;
     }
@@ -47,7 +47,7 @@
         transition: all .5s ease;
         &:hover {
             transform: translateY(-5px);
-            background-color: violet;
+            background-color: $color-violet;
         }
     }
 }
@@ -57,7 +57,7 @@
 }
 
 .rock {
-    border: 2.5rem red solid;
+    border: 2.5rem hsl(0, 100%, 50%) solid;
 }
 
 .scissors {
