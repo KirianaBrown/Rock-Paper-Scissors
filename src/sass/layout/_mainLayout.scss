@@ -2,7 +2,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    height: 90%;
+    height: 98%;
     width: 90%;
     transform: translate(-50%, -50%);
     display: flex;
@@ -10,30 +10,31 @@
     align-items: center;
     &-score {
         margin: 0%!important;
-        width: 70%;
-        border-radius: 15px;
+        width: 60%;
+        border-radius: $border-radius;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        font-size: 1.2rem;
-        border: linen .5px solid;
-        color: orangered;
-        padding: 0rem 6rem;
-        box-shadow: 10px 10px 5px 0px $color-blue-dark;
-        -webkit-box-shadow: 10px 10px 5px 0px $color-blue-dark;
-        -moz-box-shadow: 10px 10px 5px 0px $color-blue-dark;
+        font-size: 2rem;
+        line-height: 50%;
+        border: $color-blue-lighter .5px solid;
+        padding: 0rem 4rem;
+        box-shadow: 5px 5px 5px 0px $color-blue-darkest;
+        -webkit-box-shadow: 5px 5px 5px 0px $color-blue-darkest;
+        -moz-box-shadow: 5px 5px 5px 0px $color-blue-darkest;
         &--scores {
-            padding: 2rem 6rem;
+            padding: 0rem 6rem;
             text-align: center;
-            background-color: #fff;
+            background-color: $color-white;
             margin: 2rem;
             color: $color-blue-darker;
-            border-radius: 15px;
-            h1 {
-                font-size: 4rem;
-                padding: 0rem;
-                line-height: 20%!important;
-            }
+            border-radius: $border-radius;
+            box-shadow: 5px 5px 5px 0px $color-blue-lighter;
+            -webkit-box-shadow: 5px 5px 5px 0px $color-blue-lighter;
+            -moz-box-shadow: 5px 5px 5px 0px $color-blue-lighter;
+        }
+        &--score {
+            font-size: 6rem;
         }
     }
     &-controls {
@@ -50,12 +51,6 @@
         }
         &--single {
             margin-top: 4rem;
-        }
-        &--button {
-            // width: 20rem;
-            // height: 20rem;
-            // border-radius: 50%;
-            // cursor: pointer;
         }
     }
 }
