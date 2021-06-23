@@ -12,10 +12,18 @@
 <body>
     <div class="container">
         <div class="container-score">
-            <h1>Rock<br>paper<br>Scissors</h1>
+            <div class='container-score--heading'>
+                <h1>Rock</h1>
+                <h1>Paper</h1>
+                <h1>Scissors</h1>
+            </div>
+            <div class="game-buttons">
+                <button class="game-buttons--start">Start Game</button>
+                <button class="game-buttons--new">Reset Score</button>
+            </div>
             <div class="container-score--scores">
-                <h6>Score</h6>
-                <h1>19</h1>
+                <p class="container-score--title">Score</p>
+                <h1 class="container-score--score">19</h1>
             </div>
         </div>
         <div class="container-controls">
@@ -30,11 +38,13 @@
             </div>
             <div class="container-controls--single">
                 <div class="container-controls--container">
-                    <button class="container-controls--button paper"><img src="img/icon-scissors.svg" alt="image of scissors"></button>
+                    <button class="container-controls--button scissors"><img src="img/icon-scissors.svg" alt="image of scissors"></button>
                 </div>
             </div>
-
         </div>
+        <footer>
+            <button class="game-buttons--rules">Rules</button>
+        </footer>
     </div>
 
     <script src="dist/bundle.js"></script>

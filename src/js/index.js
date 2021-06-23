@@ -8,13 +8,15 @@ const state = {
     computerSelection: 0,
     playerSelection: 0,
     computerWins: true,
-    gameIsPlaying: false,
+    gameIsPlaying: true,
 };
 
-const gameController = () => {
-    if (gameIsPlaying) {
+const gameController = (selected) => {
+    if (state.gameIsPlaying) {
         // Hide start game button
         // record users selection
+        const playerSelection = selected;
+        console.log(playerSelection);
         // once selected "freeze" other buttons
         // random generate for computer (1,2,3)
         // compare results
@@ -28,15 +30,15 @@ const gameController = () => {
 elements.rock.addEventListener("click", (e) => {
     e.preventDefault();
     console.log("rock is selected");
-    console.log("Add active state");
+    gameController("rock");
 });
 elements.paper.addEventListener("click", (e) => {
     e.preventDefault();
     console.log("paper is selected");
-    console.log("paper is selected");
+    gameController("paper");
 });
 elements.scissors.addEventListener("click", (e) => {
     e.preventDefault();
     console.log("scissors is selected");
-    console.log("scissors is selected");
+    gameController("scissors");
 });
