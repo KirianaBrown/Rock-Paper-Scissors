@@ -21,11 +21,11 @@ const gameController = () => {
     if (state.gameIsPlaying) {
         // 1. Get player selection
         const playerSelection = options[state.playerSelection];
-
-        resultsView.renderPending(playerSelection);
-
         // 2. Get computer selection
         state.computerSelection = Computer();
+        const computerSelection = options[state.computerSelection];
+        resultsView.renderPending(playerSelection, computerSelection );
+
         // 3. Compare scores
         state.result = compareScores(
             state.playerSelection,
