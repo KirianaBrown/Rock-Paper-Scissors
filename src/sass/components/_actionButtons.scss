@@ -30,6 +30,12 @@
         color: $color-white;
         border: 1px solid $color-white;
     }
+    &--play_again {
+        @extend %game-button;
+        background-color: transparent;
+        color: $color-white;
+        border: 1px solid $color-white;
+    }
 }
 
 .container-controls {
@@ -50,6 +56,54 @@
             background-color: $color-violet;
         }
     }
+}
+
+.container-results {
+    text-align: center;
+    &--container {
+        height: 20rem;
+        width: 20rem;
+        border-radius: 50%;
+    }
+    &--button {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        transition: all .5s ease;
+        box-shadow: 5px 10px 5px 0px $color-blue-lighter inset;
+        -webkit-box-shadow: 5px 10px 5px 0px $color-blue-lighter inset;
+        -moz-box-shadow: 5px 10px 5px 0px $color-blue-lighter inset;
+    }
+    &--heading {
+        margin-bottom: 4rem;
+        font-style: italic;
+    }
+}
+
+.container-pending {
+    text-align: center;
+    &--container {
+        height: 20rem;
+        width: 20rem;
+        border-radius: 50%;
+    }
+    &--button {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        transition: all .5s ease;
+        box-shadow: 5px 10px 5px 0px $color-blue-lighter inset;
+        -webkit-box-shadow: 5px 10px 5px 0px $color-blue-lighter inset;
+        -moz-box-shadow: 5px 10px 5px 0px $color-blue-lighter inset;
+    }
+    &--heading {
+        margin-bottom: 4rem;
+        font-style: italic;
+    }
+}
+
+.result-winner {
+    font-size: 4rem;
 }
 
 .paper {
