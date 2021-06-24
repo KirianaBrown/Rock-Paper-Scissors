@@ -1,6 +1,4 @@
-import {
-    elements
-} from "./base";
+import { elements } from "./base";
 
 export const renderPending = (playerOption, computerOption) => {
     elements.container_controls.style.display = "none";
@@ -15,19 +13,21 @@ export const renderPending = (playerOption, computerOption) => {
             <h2 class="container-pending--heading ">The House Picked</h2>
             <button class="container-pending--button pending"></button>
         </div>     
-    `
+    `;
     const markup = `
-    <div class="container-pending--container animate-in">
+    <div class="container-pending--container">
             <h2 class="container-pending--heading ">The House Picked</h2>
-            <button class="container-pending--button ${computerOption}"><img src="img/icon-${computerOption}.svg" alt="image of ${computerOption}">  
+            <button class="container-pending--button ${computerOption} animate-in"><img src="img/icon-${computerOption}.svg" alt="image of ${computerOption}">  
             </button>
         </div>
-    `
-    elements.container_pending.insertAdjacentHTML('afterbegin', html);
+    `;
+    elements.container_pending.insertAdjacentHTML("afterbegin", html);
     elements.container_pending.style.display = "flex";
 
     setTimeout(() => {
-        elements.container_pending.removeChild(elements.container_pending.lastElementChild);
-        elements.container_pending.insertAdjacentHTML('beforeend', markup)
-    }, 1000)
+        elements.container_pending.removeChild(
+            elements.container_pending.lastElementChild
+        );
+        elements.container_pending.insertAdjacentHTML("beforeend", markup);
+    }, 1000);
 };
