@@ -15,6 +15,7 @@ export const elements = {
 export const resetUi = (isPlaying) => {
     if (isPlaying) {
         elements.container_pending.innerHTML = "";
+        elements.container_pending.style.display = "none";
         elements.container_controls.style.display = "flex";
     }
 };

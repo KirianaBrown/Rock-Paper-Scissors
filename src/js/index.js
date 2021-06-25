@@ -56,8 +56,6 @@ const gameController = () => {
 };
 
 const playAgainController = () => {
-    console.log("playing another round");
-    console.log("reset ui to display only the action buttons");
     resetUi(state.gameIsPlaying);
 };
 
