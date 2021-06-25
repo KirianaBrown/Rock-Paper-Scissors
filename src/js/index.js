@@ -1,6 +1,7 @@
 import { elements, setActionButtons, resetUi } from "./views/base";
 import { renderScore } from "./views/scores";
 import * as resultsView from "./views/results";
+import * as modalView from "./views/modal";
 import Computer from "./models/Computer";
 
 // IMPORT STYLESHEETS
@@ -129,5 +130,15 @@ elements.container_pending.addEventListener("click", (e) => {
         playAgainController();
     } else {
         return;
+    }
+});
+
+elements.rules_btn.addEventListener("click", (e) => {
+    modalView.openModal();
+});
+
+elements.modal.addEventListener("click", (e) => {
+    if (e.target.classList.contains("modal-close")) {
+        modalView.closeModal();
     }
 });

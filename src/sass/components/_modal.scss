@@ -1,0 +1,28 @@
+.modal {
+    display: none;
+    background-color: $color-white;
+    position: fixed;
+    z-index: 3000;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 60%;
+    overflow: auto;
+    align-items: center;
+    justify-content: center;
+    &-content-img {
+        height: 100%;
+        width: 100%;
+    }
+    &-close {
+        color: $color-blue-darkest;
+        font-size: 4rem;
+        padding: 1rem;
+        position: absolute;
+        top: 0;
+        right: 0;
+        cursor: pointer;
+    }
+}

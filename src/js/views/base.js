@@ -7,6 +7,8 @@ export const elements = {
     score: document.querySelector(".container-score--score"),
     container_controls: document.querySelector(".container-controls"),
     container_pending: document.querySelector(".container-pending"),
+    rules_btn: document.querySelector(".game-buttons--rules"),
+    modal: document.querySelector(".modal"),
 };
 
 export const resetUi = (isPlaying) => {
