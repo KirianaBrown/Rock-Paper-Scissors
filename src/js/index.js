@@ -74,29 +74,11 @@ const compareScores = (player, computer) => {
     }
     let winner = "";
 
-    if (player === 0) {
-        if (computer === 1) {
-            winner = "computer";
-        } else {
-            winner = "player";
-        }
-    }
+    winner = player === 0 && computer !== 1 ? "player" : "computer";
 
-    if (player === 1) {
-        if (computer === 0) {
-            winner = "player";
-        } else {
-            winner = "computer";
-        }
-    }
+    winner = player === 1 && computer !== 2 ? "player" : "computer";
 
-    if (player === 2) {
-        if (computer === 0) {
-            winner = "computer";
-        } else {
-            winner = "player";
-        }
-    }
+    winner = player === 2 && computer !== 0 ? "player" : "computer";
 
     return winner;
 };
