@@ -81,5 +81,5 @@ export const renderResult = (result) => {
 
     setTimeout(() => {
         container.insertAdjacentHTML("afterbegin", html);
-    }, 2300);
+    }, 1500);
 };

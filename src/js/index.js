@@ -64,6 +64,10 @@ const uiController = () => {
         // 1. Set action buttons to active state
         setActionButtons(state.gameIsPlaying);
     } else {
+        state.currentScore = 0;
+        state.playerSelection = 0;
+        state.computerSelection = 0;
+        renderScore(state);
         setActionButtons(state.gameIsPlaying);
     }
 };
@@ -100,6 +104,8 @@ elements.start_game.addEventListener("click", (e) => {
         state.gameIsPlaying = false;
         elements.start_game.textContent = "start game";
         elements.start_game.style.background = "blueviolet";
+        resetUi(true);
+        uiController();
         setActionButtons(state.gameIsPlaying);
     }
 });
