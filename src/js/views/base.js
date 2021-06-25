@@ -7,7 +7,13 @@ export const elements = {
     score: document.querySelector(".container-score--score"),
     container_controls: document.querySelector(".container-controls"),
     container_pending: document.querySelector(".container-pending"),
-    container_results: document.querySelector(".container-results"),
+};
+
+export const resetUi = (isPlaying) => {
+    if (isPlaying) {
+        elements.container_pending.innerHTML = "";
+        elements.container_controls.style.display = "flex";
+    }
 };
 
 export const setActionButtons = (isPlaying) => {

@@ -1,4 +1,4 @@
-import { elements, setActionButtons } from "./views/base";
+import { elements, setActionButtons, resetUi } from "./views/base";
 import { renderScore } from "./views/scores";
 import * as resultsView from "./views/results";
 import Computer from "./models/Computer";
@@ -49,6 +49,12 @@ const gameController = () => {
             renderScore(state);
         });
     }
+};
+
+const playAgainController = () => {
+    console.log("playing another round");
+    console.log("reset ui to display only the action buttons");
+    resetUi(state.gameIsPlaying);
 };
 
 const uiController = () => {
@@ -109,4 +115,13 @@ elements.paper.addEventListener("click", (e) => {
 elements.scissors.addEventListener("click", (e) => {
     playerSelected(2);
     gameController();
+});
+
+elements.container_pending.addEventListener("click", (e) => {
+    console.log(e.target);
+    if (e.target.classList.contains("game-buttons--play_again")) {
+        playAgainController();
+    } else {
+        return;
+    }
 });

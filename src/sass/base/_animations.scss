@@ -18,11 +18,11 @@
 
 @keyframes fadeInScale {
     0% {
-        opacity: .5;
+        opacity: 0;
         transform: scale(.8);
     }
     50% {
-        opacity: .8;
+        opacity: .5;
         transform: scale(1.2);
     }
     100% {
