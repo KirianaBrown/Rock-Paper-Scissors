@@ -9,6 +9,7 @@ export const elements = {
     container_pending: document.querySelector(".container-pending"),
     rules_btn: document.querySelector(".game-buttons--rules"),
     modal: document.querySelector(".modal"),
+    overlay: document.querySelector(".modal-overlay"),
 };
 
 export const resetUi = (isPlaying) => {
