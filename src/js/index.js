@@ -21,26 +21,33 @@ const gameController = () => {
     if (state.gameIsPlaying) {
         // 1. Get player selection
         const playerSelection = options[state.playerSelection];
+        resultsView.renderPending(playerSelection);
+
         // 2. Get computer selection
         state.computerSelection = Computer();
         const computerSelection = options[state.computerSelection];
-        resultsView.renderPending(playerSelection, computerSelection );
+        // resultsView.renderComputerScore(computerSelection);
+        resultsView.renderComputerScore(500, computerSelection).then(() => {
+            console.log("finished timeout");
 
-        // 3. Compare scores
-        state.result = compareScores(
-            state.playerSelection,
-            state.computerSelection
-        );
-        // 4. If player wins add 5 to total
+            // 3. Compare scores
+            state.result = compareScores(
+                state.playerSelection,
+                state.computerSelection
+            );
 
-        // 5. If computer wins then remove 1 from total
-        if (state.result === "draw") {
-            return;
-        } else {
-            state.result === "player" ? state.currentScore++ : state.currentScore--;
-        }
+            resultsView.renderResult(state.result);
 
-        renderScore(state);
+            console.log(state.result);
+
+            // 4. If computer wins then remove 1 from total
+            if (state.result === "draw") {
+                return;
+            } else {
+                state.result === "player" ? state.currentScore++ : state.currentScore--;
+            }
+            renderScore(state);
+        });
     }
 };
 
