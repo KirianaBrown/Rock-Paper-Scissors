@@ -3,6 +3,7 @@ import { renderScore } from "./views/scores";
 import * as resultsView from "./views/results";
 import * as modalView from "./views/modal";
 import Computer from "./models/Computer";
+import CompareScores from "./models/CompareScores";
 
 // IMPORT STYLESHEETS
 import "../sass/main.scss";
@@ -32,7 +33,7 @@ const gameController = () => {
             console.log("finished timeout");
 
             // 3. Compare scores
-            state.result = compareScores(
+            state.result = CompareScores(
                 state.playerSelection,
                 state.computerSelection
             );
@@ -45,7 +46,9 @@ const gameController = () => {
             if (state.result === "draw") {
                 return;
             } else {
-                state.result === "player" ? state.currentScore++ : state.currentScore--;
+                state.result === "player" ?
+                    (state.currentScore += 5) :
+                    state.currentScore--;
             }
             renderScore(state);
         });
@@ -77,21 +80,6 @@ const playerSelected = (option) => {
     if (state.gameIsPlaying) {
         state.playerSelection = option;
     }
-};
-
-const compareScores = (player, computer) => {
-    if (player === computer) {
-        return "draw";
-    }
-    let winner = "";
-
-    winner = player === 0 && computer !== 1 ? "player" : "computer";
-
-    winner = player === 1 && computer !== 2 ? "player" : "computer";
-
-    winner = player === 2 && computer !== 0 ? "player" : "computer";
-
-    return winner;
 };
 
 // Event listeners
