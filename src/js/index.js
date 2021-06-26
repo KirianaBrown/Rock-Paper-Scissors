@@ -30,8 +30,6 @@ const gameController = () => {
         const computerSelection = options[state.computerSelection];
         // resultsView.renderComputerScore(computerSelection);
         resultsView.renderComputerScore(500, computerSelection).then(() => {
-            console.log("finished timeout");
-
             // 3. Compare scores
             state.result = CompareScores(
                 state.playerSelection,
@@ -39,8 +37,6 @@ const gameController = () => {
             );
 
             resultsView.renderResult(state.result);
-
-            console.log(state.result);
 
             // 4. If computer wins then remove 1 from total
             if (state.result === "draw") {
@@ -111,7 +107,6 @@ elements.scissors.addEventListener("click", (e) => {
 });
 
 elements.container_pending.addEventListener("click", (e) => {
-    console.log(e.target);
     if (e.target.classList.contains("game-buttons--play_again")) {
         playAgainController();
     } else {

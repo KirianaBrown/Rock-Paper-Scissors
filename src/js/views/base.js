@@ -21,13 +21,13 @@ export const resetUi = (isPlaying) => {
 };
 
 export const setActionButtons = (isPlaying) => {
-    if (isPlaying) {
-        elements.rock.parentNode.classList.remove("disabled");
-        elements.paper.parentNode.classList.remove("disabled");
-        elements.scissors.parentNode.classList.remove("disabled");
-    } else {
-        elements.rock.parentNode.classList.add("disabled");
-        elements.paper.parentNode.classList.add("disabled");
-        elements.scissors.parentNode.classList.add("disabled");
-    }
+    const options = [elements.rock, elements.paper, elements.scissors];
+    isPlaying
+        ?
+        options.forEach((el) => {
+            el.parentNode.classList.remove("disabled");
+        }) :
+        options.forEach((el) => {
+            el.parentNode.classList.add("disabled");
+        });
 };
