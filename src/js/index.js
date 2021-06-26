@@ -28,7 +28,7 @@ const gameController = () => {
         // 2. Get computer selection
         state.computerSelection = Computer();
         const computerSelection = options[state.computerSelection];
-        // resultsView.renderComputerScore(computerSelection);
+
         resultsView.renderComputerScore(500, computerSelection).then(() => {
             // 3. Compare scores
             state.result = CompareScores(

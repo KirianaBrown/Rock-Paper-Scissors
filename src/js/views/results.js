@@ -23,24 +23,6 @@ export const renderPending = (playerOption) => {
     elements.container_pending.style.display = "flex";
 };
 
-// export const renderComputerScore = (computerScore) => {
-//     const markup = `
-//     <div class="container-pending--container">
-//             <h2 class="container-pending--heading ">The House Picked</h2>
-//             <button class="container-pending--button ${computerScore} animate-in"><img src="img/icon-${computerScore}.svg" alt="image of ${computerScore}">
-//             </button>
-//         </div>
-//     `;
-//     return new promise((resolve) => {
-//         setTimeout((resolve) => {
-//             elements.container_pending.removeChild(
-//                 elements.container_pending.lastElementChild
-//             );
-//             elements.container_pending.insertAdjacentHTML("beforeend", markup);
-//         }, 500);
-//     });
-// };
-
 export const renderComputerScore = (seconds, computerScore) => {
     const markup = `
     <div class="container-pending--container">
