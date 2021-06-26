@@ -7,17 +7,27 @@ export const elements = {
     score: document.querySelector(".container-score--score"),
     container_controls: document.querySelector(".container-controls"),
     container_pending: document.querySelector(".container-pending"),
-    container_results: document.querySelector(".container-results"),
+    rules_btn: document.querySelector(".game-buttons--rules"),
+    modal: document.querySelector(".modal"),
+    overlay: document.querySelector(".modal-overlay"),
+};
+
+export const resetUi = (isPlaying) => {
+    if (isPlaying) {
+        elements.container_pending.innerHTML = "";
+        elements.container_pending.style.display = "none";
+        elements.container_controls.style.display = "flex";
+    }
 };
 
 export const setActionButtons = (isPlaying) => {
-    if (isPlaying) {
-        elements.rock.parentNode.classList.remove("disabled");
-        elements.paper.parentNode.classList.remove("disabled");
-        elements.scissors.parentNode.classList.remove("disabled");
-    } else {
-        elements.rock.parentNode.classList.add("disabled");
-        elements.paper.parentNode.classList.add("disabled");
-        elements.scissors.parentNode.classList.add("disabled");
-    }
+    const options = [elements.rock, elements.paper, elements.scissors];
+    isPlaying
+        ?
+        options.forEach((el) => {
+            el.parentNode.classList.remove("disabled");
+        }) :
+        options.forEach((el) => {
+            el.parentNode.classList.add("disabled");
+        });
 };

@@ -1,7 +1,9 @@
-import { elements, setActionButtons } from "./views/base";
+import { elements, setActionButtons, resetUi } from "./views/base";
 import { renderScore } from "./views/scores";
 import * as resultsView from "./views/results";
+import * as modalView from "./views/modal";
 import Computer from "./models/Computer";
+import CompareScores from "./models/CompareScores";
 
 // IMPORT STYLESHEETS
 import "../sass/main.scss";
@@ -21,27 +23,36 @@ const gameController = () => {
     if (state.gameIsPlaying) {
         // 1. Get player selection
         const playerSelection = options[state.playerSelection];
+        resultsView.renderPending(playerSelection);
+
         // 2. Get computer selection
         state.computerSelection = Computer();
         const computerSelection = options[state.computerSelection];
-        resultsView.renderPending(playerSelection, computerSelection );
 
-        // 3. Compare scores
-        state.result = compareScores(
-            state.playerSelection,
-            state.computerSelection
-        );
-        // 4. If player wins add 5 to total
+        resultsView.renderComputerScore(500, computerSelection).then(() => {
+            // 3. Compare scores
+            state.result = CompareScores(
+                state.playerSelection,
+                state.computerSelection
+            );
 
-        // 5. If computer wins then remove 1 from total
-        if (state.result === "draw") {
-            return;
-        } else {
-            state.result === "player" ? state.currentScore++ : state.currentScore--;
-        }
+            resultsView.renderResult(state.result);
 
-        renderScore(state);
+            // 4. If computer wins then remove 1 from total
+            if (state.result === "draw") {
+                return;
+            } else {
+                state.result === "player" ?
+                    (state.currentScore += 5) :
+                    state.currentScore--;
+            }
+            renderScore(state);
+        });
     }
+};
+
+const playAgainController = () => {
+    resetUi(state.gameIsPlaying);
 };
 
 const uiController = () => {
@@ -51,6 +62,10 @@ const uiController = () => {
         // 1. Set action buttons to active state
         setActionButtons(state.gameIsPlaying);
     } else {
+        state.currentScore = 0;
+        state.playerSelection = 0;
+        state.computerSelection = 0;
+        renderScore(state);
         setActionButtons(state.gameIsPlaying);
     }
 };
@@ -59,39 +74,6 @@ const playerSelected = (option) => {
     if (state.gameIsPlaying) {
         state.playerSelection = option;
     }
-};
-
-const compareScores = (player, computer) => {
-    if (player === computer) {
-        return "draw";
-    }
-    let winner = "";
-
-    if (player === 0) {
-        if (computer === 1) {
-            winner = "computer";
-        } else {
-            winner = "player";
-        }
-    }
-
-    if (player === 1) {
-        if (computer === 0) {
-            winner = "player";
-        } else {
-            winner = "computer";
-        }
-    }
-
-    if (player === 2) {
-        if (computer === 0) {
-            winner = "computer";
-        } else {
-            winner = "player";
-        }
-    }
-
-    return winner;
 };
 
 // Event listeners
@@ -105,6 +87,8 @@ elements.start_game.addEventListener("click", (e) => {
         state.gameIsPlaying = false;
         elements.start_game.textContent = "start game";
         elements.start_game.style.background = "blueviolet";
+        resetUi(true);
+        uiController();
         setActionButtons(state.gameIsPlaying);
     }
 });
@@ -120,4 +104,22 @@ elements.paper.addEventListener("click", (e) => {
 elements.scissors.addEventListener("click", (e) => {
     playerSelected(2);
     gameController();
+});
+
+elements.container_pending.addEventListener("click", (e) => {
+    if (e.target.classList.contains("game-buttons--play_again")) {
+        playAgainController();
+    } else {
+        return;
+    }
+});
+
+elements.rules_btn.addEventListener("click", (e) => {
+    modalView.openModal();
+});
+
+elements.modal.addEventListener("click", (e) => {
+    if (e.target.classList.contains("modal-close")) {
+        modalView.closeModal();
+    }
 });

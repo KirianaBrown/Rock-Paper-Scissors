@@ -1,0 +1,99 @@
+@media only screen and (min-width: 1600px) {
+    .container {
+        width: 100%!important;
+        &-score {
+            width: 60%!important;
+            font-size: .8rem!important;
+            padding: 0rem 8rem!important;
+            &--heading {
+                font-size: 1rem;
+            }
+            &--scores {
+                padding: 0rem 4rem!important;
+            }
+            &-score {
+                font-size: 1.2rem!important;
+            }
+        }
+        &-controls {
+            width: 70%!important;
+            margin-top: .5rem!important;
+            &--double {
+                width: 90%!important;
+            }
+            &--container {
+                width: 30rem!important;
+                height: 30rem!important;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .body {
+        font-size: 60%;
+    }
+    .container {
+        width: 100%!important;
+        &-score {
+            width: 70%!important;
+            font-size: .8rem!important;
+            padding: 0rem 4rem!important;
+            &--heading {
+                font-size: 1.4rem;
+            }
+            &--scores {
+                padding: 0rem 4rem!important;
+            }
+            &-score {
+                font-size: 1.2rem!important;
+            }
+        }
+        &-controls {
+            width: 80%!important;
+            margin-top: .5rem!important;
+            &--double {
+                width: 90%!important;
+            }
+            &--container {
+                width: 20rem!important;
+                height: 20rem!important;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .body {
+        font-size: 50%;
+        width: 100%!important;
+    }
+    .container {
+        width: 100%!important;
+        &-score {
+            width: 90%!important;
+            font-size: .8rem!important;
+            padding: 0rem 1rem!important;
+            &--heading {
+                font-size: 1rem;
+            }
+            &--scores {
+                padding: 0rem 2rem!important;
+            }
+            &-score {
+                font-size: 1.2rem!important;
+            }
+        }
+        &-controls {
+            width: 100%!important;
+            margin-top: .5rem!important;
+            &--double {
+                width: 90%!important;
+            }
+            &--container {
+                width: 16rem!important;
+                height: 16rem!important;
+            }
+        }
+    }
+}

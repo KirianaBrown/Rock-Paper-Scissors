@@ -11,7 +11,15 @@
     <link rel="shortcut icon" href="../img/icon-paper.svg" type="image/x-icon" />
 </head>
 
-<body>
+<body class='body'>
+    <div class="modal-overlay">
+    </div>
+    <div class="modal">
+        <div class="modal-content">
+            <img src="../img/image-rules.svg" alt="Playing rules" class="modal-content-img">
+            <span class="modal-close">&times;</span>
+        </div>
+    </div>
     <div class="container">
         <div class="container-score">
             <div class='container-score--heading'>
@@ -21,16 +29,18 @@
             </div>
             <div class="game-buttons">
                 <button class="game-buttons--start">Start Game</button>
-                <button class="game-buttons--new">Reset Score</button>
+                <!-- <button class="game-buttons--new">Reset Score</button> -->
             </div>
             <div class="container-score--scores">
                 <p class="container-score--title">Score</p>
-                <h1 class="container-score--score">19</h1>
+                <h1 class="container-score--score">0</h1>
             </div>
         </div>
+
         <div class="container-pending">
-            
+
         </div>
+
         <div class="container-controls">
             <div class="container-controls--double">
                 <div class="container-controls--container disabled">
@@ -45,28 +55,14 @@
                     <button class="container-controls--button scissors"><img src="img/icon-scissors.svg" alt="image of scissors"></button>
                 </div>
             </div>
-        </div>
-        <div class="container-results">
-            <div class="container-results--container">
-                <h2 class="container-results--heading ">You Picked</h2>
-                <button class="container-results--button rock"><img src="img/icon-rock.svg" alt="image of rock">  
-                    </button>
-            </div>
-            <div class="container-results--container">
-                <h2 class="container-results--heading result-winner ">You Win</h2>
-                <button class="game-buttons--play_again">Play Again  
-                    </button>
-            </div>
-            <div class="container-results--container ">
-                <h2 class="container-results--heading ">The House Picked</h2>
-                <button class="container-results--button paper"><img src="img/icon-paper.svg" alt="image of paper"></button>
-            </div>
-            <footer>
-                <button class="game-buttons--rules">Rules</button>
-            </footer>
-        </div>
 
-        <script src="dist/bundle.js"></script>
+        </div>
+        <footer>
+            <button class="game-buttons--rules">Rules</button>
+        </footer>
+    </div>
+
+    <script src="dist/bundle.js"></script>
 </body>
 
 </html>
