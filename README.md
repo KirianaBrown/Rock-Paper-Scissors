@@ -1,19 +1,19 @@
 <h1 align='center'>
 <br>
-<a href=""><img src="/dist/img/logo.svg" alt="Paper Scisors Rock" width="200"></a>
+<a href=""><img src="/dist/img/logo.svg" alt="Rock Paper Scissors" width="200"></a>
+<br>
+ROCK
 <br>
 PAPER
 <br>
 SCISSORS
-<br>
-ROCK
 </h1>
 
-##### Paper Scissors Rock Game
+##### Rock Paper Scissors Game
 
 Have some fun and challenge yourself to beat the computer in this interactive game of paper scissors rock.
 
-<img align='center' src="/dist/img/readme.png" alt="Paper Scissors Rock">
+<img align='center' src="/dist/img/readme.png" alt="Rock Paper Scissors">
 
 ## 🏓 Tech Stack
 
