@@ -27,7 +27,6 @@
         "node-sass": "^4.14.1",
         "sass-loader": "^10.0.2",
         "style-loader": "^1.2.1",
-        "url-loader": "^4.1.0",
         "webpack": "^4.44.2",
         "webpack-cli": "^3.3.12",
         "webpack-dev-server": "^3.11.0"
@@ -35,7 +34,6 @@
     "dependencies": {
         "@babel/polyfill": "^7.11.5",
         "core-js": "^3.6.5",
-        "dotenv-webpack": "^5.1.0",
         "regenerator-runtime": "^0.13.7"
     },
     "keywords": []
