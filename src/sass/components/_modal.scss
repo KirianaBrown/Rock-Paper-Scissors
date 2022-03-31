@@ -6,7 +6,11 @@
     transform: translate(-50%, -50%);
     width: 80%;
     height: 50%;
-    border: pink 2px solid;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    @include background-gradient;
+    border-radius: 10px;
     &-overlay {
         height: 100vh;
         ;
@@ -16,6 +20,41 @@
         background-color: rgba(17, 17, 17, .8);
         top: 0;
         left: 0;
+    }
+    &-heading {
+        @include heading;
+    }
+    & form {
+        display: flex;
+        flex-direction: column;
+        & input {
+            padding: 1rem 1.75rem;
+            @include box-shadow($color-purple-dark);
+            background-color: $color-purple-light;
+            border-radius: 5px;
+            margin: 2rem 0rem;
+            text-align: center;
+            color: whitesmoke;
+            &::placeholder {
+                color: rgba(245, 245, 245, 0.753);
+            }
+        }
+        & button {
+            margin-top: 1rem;
+            cursor: pointer;
+            padding: 1rem 1.75rem;
+            @include box-shadow($color-purple-darker);
+            background-color: $color-purple-dark;
+            border-radius: 5px;
+            color: $color-yellow;
+            border: none;
+            text-transform: uppercase;
+            font-family: $font-family;
+            font-weight: 900;
+            letter-spacing: 1.5px;
+            width: 60%;
+            align-self: center;
+        }
     }
 }
 
