@@ -6,11 +6,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
-    <link type="stylesheet" href="css/style.css">
+    <!-- <link type="stylesheet" href="css/style.css"> -->
+    <link type="stylesheet" href="../src/sass/main.scss">
     <link rel="icon" href="../img/icon-paper.svg" type="favicon.png" />
     <link rel="shortcut icon" href="../img/icon-paper.svg" type="image/x-icon" />
 </head>
 
+<body>
+    <div class="wrapper">
+        <h1 class="heading">Rock, Paper <br> Scissors!</h1>
+        <div class="score">
+            <div class="score-player">
+                <h4 class="score-name">Player</h4>
+                <p class="score-value score-value--player">0</p>
+            </div>
+            <div class="score-computer">
+                <h4 class="score-name">Computer</h4>
+                <p class="score-value score-value--computer">1</p>
+            </div>
+        </div>
+        <div class="game">
+            <div class="game-selection game-selection--player">
+                <img src="../img/paper-sm.svg" alt="player-selection--paper-sm">
+            </div>
+            <div class="game-vs">VS</div>
+            <div class="game-selection game-selection--computer">
+                <img src="../img/rock-sm.svg" alt="computer-selection-rock-sm">
+            </div>
+        </div>
+        <div class="options">
+            <div class="option-01">01</div>
+            <div class="option-02">02</div>
+            <div class="option-03">03</div>
+        </div>
+        <div class="result">
+            <h1>game result</h1>
+        </div>
+    </div>
+    <script src="dist/bundle.js"></script>
+</body>
+
+</html>
+
+
+
+<!-- 
 <body class='body'>
     <div class="modal-overlay">
     </div>
@@ -29,7 +69,6 @@
             </div>
             <div class="game-buttons">
                 <button class="game-buttons--start">Start Game</button>
-                <!-- <button class="game-buttons--new">Reset Score</button> -->
             </div>
             <div class="container-score--scores">
                 <p class="container-score--title">Score</p>
@@ -63,6 +102,4 @@
     </div>
 
     <script src="dist/bundle.js"></script>
-</body>
-
-</html>
+</body> -->

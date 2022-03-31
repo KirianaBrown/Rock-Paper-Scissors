@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@400;500;700;900&display=swap');
 $color-blue-dark: #182548;
 $color-blue-darker: #2b2a3b;
 $color-blue-lighter: #413f59;
@@ -6,6 +6,30 @@ $color-blue-darkest: #201f2c;
 $color-violet: #8a2be2;
 $color-white: #e9e7e7;
 $disabled-grey: #b6b6b6;
-$font-family: 'Noto Sans JP';
 $border-radius: 10px;
 $shadow: #1f1888;
+// NEW WAVE COLORS
+$color-yellow: #FFEC00;
+$color-purple-dark: #9419ff9f;
+$color-purple-light: #ff00bb;
+// NEW FONT FAMILY
+$font-family: 'Exo',
+sans-serif;
+// TEXT SHADOW
+@mixin text-shadow {
+    text-shadow: $color-purple-dark 1px 1px, $color-purple-dark 2px 2px, $color-purple-dark 3px 3px, $color-purple-dark 4px 4px,
+}
+
+@mixin heading {
+    font-size: 2.2rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0rem;
+    line-height: 1.4;
+    text-align: center;
+    color: $color-purple-light;
+    // @include text-shadow;
+    // -webkit-text-stroke: 1px violet;
+    transform: rotate(-3deg);
+}
