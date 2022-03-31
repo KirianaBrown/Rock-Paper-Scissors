@@ -9,6 +9,17 @@
     }
     .heading {
         @include heading;
+        &-sub {
+            color: $color-purple-dark;
+            text-align: center;
+            font-weight: 700;
+            &::before {
+                content: " ------ "
+            }
+            &::after {
+                content: " ------ "
+            }
+        }
     }
     .score {
         display: flex;
