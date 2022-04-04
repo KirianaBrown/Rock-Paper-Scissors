@@ -10,8 +10,8 @@
     display: flex;
     flex-direction: column;
     border-radius: 10px;
-    transition: all ease-out .8s;
-    // display: none;
+    // transition: all ease-out .8s;
+    display: none;
     &-overlay {
         height: 100vh;
         width: 100vw;
@@ -20,8 +20,8 @@
         background-color: #1c0233ee;
         top: 0;
         left: 0;
-        transition: all ease-out 2s;
-        // display: none
+        transition: all ease .8s;
+        display: none
     }
     &-heading {
         @include heading;

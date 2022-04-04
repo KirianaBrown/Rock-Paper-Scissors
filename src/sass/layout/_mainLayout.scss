@@ -54,6 +54,11 @@
                 & img {
                     max-width: 100%;
                 }
+                &-start {
+                    height: 10rem;
+                    width: 10rem;
+                    margin: 2rem .5rem;
+                }
             }
             &-vs {
                 @include heading;
@@ -163,11 +168,15 @@
                 & img {
                     max-width: 100%;
                 }
-                &-animate {
-                    animation-name: hover;
-                    animation-timing-function: linear;
-                    animation-duration: 2s;
-                    animation-iteration-count: infinite;
+                // &-animate {
+                //     animation-name: hover;
+                //     animation-timing-function: linear;
+                //     animation-duration: 2s;
+                //     animation-iteration-count: infinite;
+                // }
+                &-start {
+                    height: 18rem;
+                    width: 18rem;
                 }
             }
             &-vs {
@@ -192,12 +201,15 @@
                     color: $color-purple-dark;
                     font-family: $font-family;
                     font-size: 1rem;
+                    font-weight: 700;
+                    letter-spacing: 1.2;
                 }
             }
             & button {
                 width: 10rem;
                 height: 10rem;
-                border: .5rem dashed $color-purple-light;
+                border: 1px solid $color-purple-light;
+                // border: .5rem dashed $color-purple-light;
                 @include box-shadow($color-purple-dark);
                 background: #e9ecef50;
                 display: flex;
@@ -211,12 +223,19 @@
                     transform: scale(1.05);
                 }
             }
+            &-start-pulse {
+                animation-name: pulse;
+                animation-timing-function: linear;
+                animation-duration: 1.5s;
+                animation-iteration-count: infinite;
+            }
             & img {
                 max-width: 100%;
                 max-height: 100%;
             }
         }
         .result {
+            // display: none;
             text-align: center;
             font-size: 3rem;
             color: $color-purple-darker;
@@ -231,10 +250,25 @@
             transform: translateY(0);
         }
         50% {
-            transform: translateY(-20px);
+            transform: translateY(-6px);
         }
         100% {
             transform: translateY(0);
+        }
+    }
+    
+    @keyframes pulse {
+        0% {
+            transform: scale(1.0);
+            -webkit-transform: scale(1.0);
+        }
+        50% {
+            transform: scale(1.05);
+            -webkit-transform: scale(1.05);
+        }
+        100% {
+            transform: scale(1.0);
+            -webkit-transform: scale(1.0);
         }
     }
     
