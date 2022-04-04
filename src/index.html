@@ -34,30 +34,50 @@
     <div class="wrapper">
         <h1 class="heading">Rock, Paper <br> Scissors!</h1>
         <p class="heading-sub">Let the best of 3 begin!</p>
-        <div class="score">
-            <div class="score-player">
-                <h4 class="score-name">Player</h4>
-                <p class="score-value score-value--player">0</p>
+        <!-- wrapper big -->
+        <div class="wrapper-bg">
+            <div class="score score-sm">
+                <div class="score-player">
+                    <h4 class="score-name">Player</h4>
+                    <p class="score-value score-value--player">0</p>
+                </div>
+                <div class="score-computer">
+                    <h4 class="score-name">Computer</h4>
+                    <p class="score-value score-value--computer">1</p>
+                </div>
             </div>
-            <div class="score-computer">
-                <h4 class="score-name">Computer</h4>
-                <p class="score-value score-value--computer">1</p>
+            <div class="options options-lg">
+                <p>It's your turn, <br> select one of the options below</p>
+                <button class="option-01"><img src="../img/rock-sm.svg" alt="selection-option-rock"></button>
+                <button class="option-02"><img src="../img/paper-sm.svg" alt="selection-option-paper"></button>
+                <button class="option-03"><img src="../img/scissors-sm.svg" alt="selection-option-scissors"></button>
+            </div>
+            <div class="game">
+                <div class="game-selection game-selection--player">
+                    <img src="../img/rock-lg.svg" alt="player-selection--player">
+                </div>
+                <div class="game-vs">VS</div>
+                <div class="game-selection game-selection--computer">
+                    <img src="../img/paper-lg.svg" alt="computer-selection-robot">
+                </div>
+            </div>
+            <div class="score score-lg">
+                <div class="score-player">
+                    <h4 class="score-name">Player</h4>
+                    <p class="score-value score-value--player">0</p>
+                </div>
+                <div class="score-computer">
+                    <h4 class="score-name">Computer</h4>
+                    <p class="score-value score-value--computer">1</p>
+                </div>
+            </div>
+            <div class="options options-sm">
+                <button class="option-01"><img src="../img/rock-sm.svg" alt="selection-option-rock"></button>
+                <button class="option-02"><img src="../img/paper-sm.svg" alt="selection-option-paper"></button>
+                <button class="option-03"><img src="../img/scissors-sm.svg" alt="selection-option-scissors"></button>
             </div>
         </div>
-        <div class="game">
-            <div class="game-selection game-selection--player">
-                <img src="../img/player.svg" alt="player-selection--player">
-            </div>
-            <div class="game-vs">VS</div>
-            <div class="game-selection game-selection--computer">
-                <img src="../img/robot.svg" alt="computer-selection-robot">
-            </div>
-        </div>
-        <div class="options">
-            <button class="option-01"><img src="../img/rock-sm.svg" alt="selection-option-rock"></button>
-            <button class="option-02"><img src="../img/paper-sm.svg" alt="selection-option-paper"></button>
-            <button class="option-03"><img src="../img/scissors-sm.svg" alt="selection-option-scissors"></button>
-        </div>
+
         <div class="result">
             <p>It's your turn, select one of the options above</p>
             <h1>game result</h1>
