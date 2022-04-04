@@ -10,6 +10,11 @@ export const elements = {
     rules_btn: document.querySelector(".game-buttons--rules"),
     modal: document.querySelector(".modal"),
     overlay: document.querySelector(".modal-overlay"),
+    // New elements
+    newPlayerFormButton: document.querySelector(".modal-form--button"),
+    newPlayerFormInput: document.querySelector(".modal-form--input"),
+    newPlayerForm: document.querySelector(".modal-form"),
+    newPlayerFormSubHeading: document.querySelector(".modal-heading--sub"),
 };
 
 export const resetUi = (isPlaying) => {

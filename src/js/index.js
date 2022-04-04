@@ -2,8 +2,10 @@ import { elements, setActionButtons, resetUi } from "./views/base";
 import { renderScore } from "./views/scores";
 import * as resultsView from "./views/results";
 import * as modalView from "./views/modal";
+import * as formView from "./views/form";
 import Computer from "./models/Computer";
 import CompareScores from "./models/CompareScores";
+import StartGame from "./models/StartGame";
 
 // IMPORT STYLESHEETS
 import "../sass/main.scss";
@@ -17,6 +19,7 @@ const state = {
     computerWins: true,
     gameIsPlaying: false,
     result: "computer",
+    playerName: "",
 };
 
 const gameController = () => {
@@ -75,6 +78,43 @@ const playerSelected = (option) => {
         state.playerSelection = option;
     }
 };
+
+const startGameController = () => {
+    const { valid, playerName, counter } = StartGame();
+
+    if (!valid) {
+        if (counter === 1) {
+            formView.newPlayerFormFeedback("Oops, let's try that again!");
+        }
+        if (counter === 2) {
+            formView.newPlayerFormFeedback(
+                "Hmmm I see you didn't enter a name - how about one more chance!"
+            );
+        }
+        if (counter === 3) {
+            formView.newPlayerFormFeedback(
+                "Okay I see you don't want to give me a name - let's go with BertyBot then!"
+            );
+
+            state.playerName = "BertyBot";
+        }
+    } else {
+        formView.newPlayerFormFeedback(
+            `Yay, ${playerName}, let's get this game started!!`
+        );
+        formView.closeNewPlayerForm();
+
+        state.playerName = playerName;
+    }
+};
+
+/*
+ ##### NEW ELEMENTS
+*/
+elements.newPlayerForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    startGameController();
+});
 
 // Event listeners
 elements.start_game.addEventListener("click", (e) => {
