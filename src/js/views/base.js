@@ -15,6 +15,8 @@ export const elements = {
     newPlayerFormInput: document.querySelector(".modal-form--input"),
     newPlayerForm: document.querySelector(".modal-form"),
     newPlayerFormSubHeading: document.querySelector(".modal-heading--sub"),
+    loaderBackground: document.querySelector(".loader-bg"),
+    loader: document.querySelector(".loader"),
 };
 
 export const resetUi = (isPlaying) => {

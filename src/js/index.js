@@ -10,6 +10,12 @@ import StartGame from "./models/StartGame";
 // IMPORT STYLESHEETS
 import "../sass/main.scss";
 
+window.onload = (event) => {
+    console.log("page is fully loaded");
+    elements.loaderBackground.style.display = "none";
+    elements.loader.style.display = "none";
+};
+
 const options = ["rock", "paper", "scissors"];
 
 const state = {

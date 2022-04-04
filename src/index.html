@@ -13,6 +13,9 @@
 </head>
 
 <body>
+    <div class="loader-bg">
+        <div class="loader"></div>
+    </div>
     <div class="modal-overlay"></div>
     <div class="modal">
         <div class="modal-content">
@@ -54,11 +57,11 @@
             </div>
             <div class="game">
                 <div class="game-selection game-selection--player">
-                    <img src="../img/rock-lg.svg" alt="player-selection--player">
+                    <img src="../img/rock-lg.svg" alt="player-selection--player" class="game-selection-animate">
                 </div>
                 <div class="game-vs">VS</div>
                 <div class="game-selection game-selection--computer">
-                    <img src="../img/paper-lg.svg" alt="computer-selection-robot">
+                    <img src="../img/paper-lg.svg" alt="computer-selection-robot" class="game-selection-animate">
                 </div>
             </div>
             <div class="score score-lg">
@@ -68,7 +71,7 @@
                 </div>
                 <div class="score-computer">
                     <h4 class="score-name">Computer</h4>
-                    <p class="score-value score-value--computer">1</p>
+                    <p class="score-value score-value--computer">0</p>
                 </div>
             </div>
             <div class="options options-sm">

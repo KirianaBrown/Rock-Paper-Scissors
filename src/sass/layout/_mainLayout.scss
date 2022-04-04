@@ -163,6 +163,12 @@
                 & img {
                     max-width: 100%;
                 }
+                &-animate {
+                    animation-name: hover;
+                    animation-timing-function: linear;
+                    animation-duration: 2s;
+                    animation-iteration-count: infinite;
+                }
             }
             &-vs {
                 @include heading;
@@ -217,6 +223,18 @@
             p {
                 display: none;
             }
+        }
+    }
+    
+    @keyframes hover {
+        0% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-20px);
+        }
+        100% {
+            transform: translateY(0);
         }
     }
     
