@@ -5,7 +5,7 @@ import * as modalView from "./views/modal";
 import * as formView from "./views/form";
 import Computer from "./models/Computer";
 import CompareScores from "./models/CompareScores";
-import StartGame from "./models/StartGame";
+import NewGameValidation from "./models/NewGameValidation";
 
 // IMPORT STYLESHEETS
 import "../sass/main.scss";
@@ -24,41 +24,62 @@ const state = {
     playerSelection: 0,
     computerWins: true,
     gameIsPlaying: false,
-    result: "computer",
+    result: "it's a tie",
     playerName: "",
+    playerScore: 0,
+    computerScore: 0,
 };
 
-const gameController = () => {
+const gamePlayController = () => {
     if (state.gameIsPlaying) {
+        console.log("Game play is LIVE");
         // 1. Get player selection
-        const playerSelection = options[state.playerSelection];
-        resultsView.renderPending(playerSelection);
 
         // 2. Get computer selection
-        state.computerSelection = Computer();
-        const computerSelection = options[state.computerSelection];
 
-        resultsView.renderComputerScore(500, computerSelection).then(() => {
-            // 3. Compare scores
-            state.result = CompareScores(
-                state.playerSelection,
-                state.computerSelection
-            );
+        // 3. Compare scores
 
-            resultsView.renderResult(state.result);
-
-            // 4. If computer wins then remove 1 from total
-            if (state.result === "draw") {
-                return;
-            } else {
-                state.result === "player" ?
-                    (state.currentScore += 5) :
-                    state.currentScore--;
-            }
-            renderScore(state);
-        });
+        // 4. Update scores
+    } else {
+        console.log("Game play is NOT live");
     }
 };
+
+const uiPlayController = () => {
+    if (state.gameIsPlaying) {}
+};
+
+// const gameController = () => {
+//     if (state.gameIsPlaying) {
+//         // 1. Get player selection
+//         const playerSelection = options[state.playerSelection];
+//         resultsView.renderPending(playerSelection);
+
+//         // 2. Get computer selection
+//         state.computerSelection = Computer();
+//         const computerSelection = options[state.computerSelection];
+
+//         resultsView.renderComputerScore(500, computerSelection).then(() => {
+//             // 3. Compare scores
+//             state.result = CompareScores(
+//                 state.playerSelection,
+//                 state.computerSelection
+//             );
+
+//             resultsView.renderResult(state.result);
+
+//             // 4. If computer wins then remove 1 from total
+//             if (state.result === "draw") {
+//                 return;
+//             } else {
+//                 state.result === "player" ?
+//                     (state.currentScore += 5) :
+//                     state.currentScore--;
+//             }
+//             renderScore(state);
+//         });
+//     }
+// };
 
 const playAgainController = () => {
     resetUi(state.gameIsPlaying);
@@ -85,8 +106,18 @@ const playerSelected = (option) => {
     }
 };
 
-const startGameController = () => {
-    const { valid, playerName, counter } = StartGame();
+const startNewGame = (playerName) => {
+    // Set state variables
+    state.playerName = playerName;
+    state.gameIsPlaying = true;
+    // Close new player form
+    formView.closeNewPlayerForm();
+    // Start game
+    gamePlayController();
+};
+
+const verifyNewGame = () => {
+    const { valid, playerName, counter } = NewGameValidation();
 
     if (!valid) {
         if (counter === 1) {
@@ -101,16 +132,13 @@ const startGameController = () => {
             formView.newPlayerFormFeedback(
                 "Okay I see you don't want to give me a name - let's go with BertyBot then!"
             );
-
-            state.playerName = "BertyBot";
+            startNewGame("BertyBot");
         }
     } else {
         formView.newPlayerFormFeedback(
             `Yay, ${playerName}, let's get this game started!!`
         );
-        formView.closeNewPlayerForm();
-
-        state.playerName = playerName;
+        startNewGame(playerName);
     }
 };
 
@@ -119,7 +147,7 @@ const startGameController = () => {
 */
 elements.newPlayerForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    startGameController();
+    verifyNewGame();
 });
 
 // Event listeners

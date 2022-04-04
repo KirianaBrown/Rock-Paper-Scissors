@@ -11,7 +11,7 @@
     flex-direction: column;
     border-radius: 10px;
     // transition: all ease-out .8s;
-    display: none;
+    // display: none;
     &-overlay {
         height: 100vh;
         width: 100vw;
@@ -21,7 +21,7 @@
         top: 0;
         left: 0;
         transition: all ease .8s;
-        display: none
+        // display: none
     }
     &-heading {
         @include heading;
