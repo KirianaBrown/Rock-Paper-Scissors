@@ -5,8 +5,17 @@ export const newPlayerFormFeedback = (message) => {
 };
 
 export const closeNewPlayerForm = () => {
+    function changeDisplay() {
+        elements.modal.style.display = "none";
+        elements.overlay.style.display = "none";
+    }
+
     setTimeout(() => {
         elements.modal.style.opacity = 0;
         elements.overlay.style.opacity = 0;
-    }, 1500);
+
+        setTimeout(() => {
+            changeDisplay();
+        }, 1000);
+    }, 1000);
 };
