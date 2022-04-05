@@ -1,5 +1,10 @@
 import state from "./store/State";
-import { elements, optionElements, disableButtons } from "./views/base";
+import {
+    elements,
+    optionElements,
+    disableButtons,
+    activateButtons,
+} from "./views/base";
 import { updateScores } from "./views/scores";
 import * as selectionsView from "./views/selections";
 import * as resultsView from "./views/results";
@@ -15,90 +20,55 @@ import "../sass/main.scss";
 
 const gamePlayController = () => {
     if (state.isGamePlaying) {
-        console.log("Game play is LIVE");
-        // 1. Get player selection
-        const playerSelection = state.options[+state.playerSelection];
-
-        // 2. Get computer selection
-        const computerSelection = state.options[Computer()];
-
-        // 3. Render selections to UI
-        selectionsView.renderSelections(playerSelection, computerSelection);
-
-        // 4. Compare scores
-        const winner = CompareScores(playerSelection, computerSelection);
-
-        // 5. Display Result
-        resultsView.displayGameResult(winner);
-
-        // 5. Update scores
-        updateScores(winner);
+        if (!state.haveAWinner) {
+            console.log("Start A ROUND");
+            roundController();
+        } else {
+            console.log("We have a winner!");
+        }
     } else {
         console.log("Game play is NOT live");
     }
 };
 
-// const gameController = () => {
-//     if (state.gameIsPlaying) {
-//         // 1. Get player selection
-//         const playerSelection = options[state.playerSelection];
-//         resultsView.renderPending(playerSelection);
+const roundController = () => {
+    /**
+     * 1. Play a round
+     * 2. Get playersSelection
+     * 3. Generate Computer Selection
+     * 4. Determine round winner
+     * 5. Display round result
+     * 6. Update game scores
+     * 7. reset gameboard
+     */
 
-//         // 2. Get computer selection
-//         state.computerSelection = Computer();
-//         const computerSelection = options[state.computerSelection];
+    // 1. Get player selection
+    const playerSelection = state.options[+state.playerSelection];
 
-//         resultsView.renderComputerScore(500, computerSelection).then(() => {
-//             // 3. Compare scores
-//             state.result = CompareScores(
-//                 state.playerSelection,
-//                 state.computerSelection
-//             );
+    // 2. Get computer selection
+    const computerSelection = state.options[Computer()];
 
-//             resultsView.renderResult(state.result);
+    // 3. Render selections to UI
+    selectionsView.renderSelections(playerSelection, computerSelection);
 
-//             // 4. If computer wins then remove 1 from total
-//             if (state.result === "draw") {
-//                 return;
-//             } else {
-//                 state.result === "player" ?
-//                     (state.currentScore += 5) :
-//                     state.currentScore--;
-//             }
-//             renderScore(state);
-//         });
-//     }
-// };
+    // 4. Compare scores
+    const winner = CompareScores(playerSelection, computerSelection);
 
-// const playAgainController = () => {
-//     resetUi(state.gameIsPlaying);
-// };
+    // 5. Display Result
+    resultsView.displayGameResult(winner);
 
-// const uiController = () => {
-//     if (state.gameIsPlaying) {
-//         // 0. Reset UI score
-//         renderScore(state);
-//         // 1. Set action buttons to active state
-//         setActionButtons(state.gameIsPlaying);
-//     } else {
-//         state.currentScore = 0;
-//         state.playerSelection = 0;
-//         state.computerSelection = 0;
-//         renderScore(state);
-//         setActionButtons(state.gameIsPlaying);
-//     }
-// };
+    // 5. Update scores
+    updateScores(winner);
 
-// const playerSelected = (option) => {
-//     if (state.gameIsPlaying) {
-//         state.playerSelection = option;
-//     }
-// };
+    // 6. Reset gameBoard
+    setTimeout(() => {
+        activateButtons(state.buttons);
+    }, 1500);
+};
+
+const resetGameBoard = () => {};
 
 const startNewGame = (playerName) => {
-    /*  
-                        1. Set state playerName, close new player form and set up player selection board
-                    */
     state.playerName = playerName;
     state.isGamePlaying = true;
     formView.closeNewPlayerForm();
@@ -143,15 +113,15 @@ elements.newPlayerForm.addEventListener("submit", (e) => {
 const setPlayerSelection = () => {
     // Get options avaliable
     const { rock, paper, scissors } = optionElements;
-    const optionsArr = [rock, paper, scissors];
+    state.buttons = [rock, paper, scissors];
 
     // Set and handle event listeners on each option
-    optionsArr.forEach((el) => {
+    state.buttons.forEach((el) => {
         el.addEventListener("click", (e) => {
             // Set state
             state.playerSelection = el.value;
             // Handle display props of btns
-            disableButtons(optionsArr);
+            disableButtons(state.buttons);
             el.classList.add("options-selected");
             // Set game play
             gamePlayController();

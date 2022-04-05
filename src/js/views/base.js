@@ -39,3 +39,11 @@ export const disableButtons = (options) => {
         option.classList.remove("options-start-pulse");
     });
 };
+
+export const activateButtons = (options) => {
+    options.forEach((option) => {
+        option.disabled = false;
+        option.classList.add("options-start-pulse");
+        option.classList.remove("options-selected");
+    });
+};
