@@ -1,8 +1,7 @@
 import { scoreElements } from "./base";
+import state from "../store/State";
 
 export const updateScores = (roundWinner) => {
-    console.log(roundWinner);
-
     let playerScoreElement;
     let computerScoreElement;
 
@@ -15,13 +14,15 @@ export const updateScores = (roundWinner) => {
         scoreElements.computerSm;
 
     if (roundWinner === "player") {
+        state.playerScore++;
         counterAnimation(playerScoreElement);
-        playerScoreElement.innerHTML = "1";
+        playerScoreElement.innerHTML = state.playerScore;
     }
 
     if (roundWinner === "computer") {
+        state.computerScore++;
         counterAnimation(computerScoreElement);
-        computerScoreElement.innerHTML = "1";
+        computerScoreElement.innerHTML = state.computerScore;
     }
 
     if (roundWinner === "draw") {
