@@ -150,30 +150,27 @@ const verifyNewGame = () => {
 const { rock, paper, scissors } = optionElements;
 const optionsArr = [rock, paper, scissors];
 
+const disableButtons = () => {
+    // rock.disabled = true;
+    // paper.disabled = true;
+    // scissors.disabled = true;
+
+    optionsArr.forEach((el) => {
+        el.disabled = true;
+        el.classList.remove("options-start-pulse");
+    });
+};
+
 optionsArr.forEach((el) => {
     el.addEventListener("click", (e) => {
-        console.log(el);
+        // Set state player value
+        state.playerSelection = el.value;
+        // disable selections
+        disableButtons();
+        // Add selected class
+        el.classList.add("options-selected");
     });
 });
-
-// const disableButtons = () => {
-//     rock.disabled = true;
-//     paper.disabled = true;
-//     scissors.disabled = true;
-// };
-
-// rock.addEventListener("click", (e) => {
-//     state.playerSelection = 0
-//     disableButtons();
-// });
-// rock.addEventListener("click", (e) => {
-//   state.playerSelection = 1;
-//   disableButtons();
-// });
-// rock.addEventListener("click", (e) => {
-//   state.playerSelection = 2;
-//   disableButtons();
-// });
 
 elements.newPlayerForm.addEventListener("submit", (e) => {
     e.preventDefault();

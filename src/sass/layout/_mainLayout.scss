@@ -218,17 +218,20 @@
                 margin: .75rem .5rem;
                 border-radius: 10px;
                 cursor: pointer;
-                &:hover {
-                    transform: translateY(5px);
-                    transform: scale(1.05);
-                    border: .5rem dashed $color-yellow;
-                }
             }
             &-start-pulse {
                 animation-name: pulse;
                 animation-timing-function: linear;
                 animation-duration: 1.5s;
                 animation-iteration-count: infinite;
+                &:hover {
+                    transform: translateY(5px);
+                    transform: scale(1.05);
+                    border: .5rem dashed $color-yellow;
+                }
+            }
+            &-selected {
+                border: .5rem dashed $color-yellow!important;
             }
             & img {
                 max-width: 100%;
