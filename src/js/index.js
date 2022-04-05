@@ -1,4 +1,9 @@
-import { elements, setActionButtons, resetUi } from "./views/base";
+import {
+    elements,
+    optionElements,
+    setActionButtons,
+    resetUi,
+} from "./views/base";
 import { renderScore } from "./views/scores";
 import * as resultsView from "./views/results";
 import * as modalView from "./views/modal";
@@ -6,15 +11,10 @@ import * as formView from "./views/form";
 import Computer from "./models/Computer";
 import CompareScores from "./models/CompareScores";
 import NewGameValidation from "./models/NewGameValidation";
+import PlayerSelection from "./models/PlayerSelection";
 
 // IMPORT STYLESHEETS
 import "../sass/main.scss";
-
-window.onload = (event) => {
-    console.log("page is fully loaded");
-    elements.loaderBackground.style.display = "none";
-    elements.loader.style.display = "none";
-};
 
 const options = ["rock", "paper", "scissors"];
 
@@ -34,6 +34,7 @@ const gamePlayController = () => {
     if (state.gameIsPlaying) {
         console.log("Game play is LIVE");
         // 1. Get player selection
+        const playerSelection = state.playerSelection;
 
         // 2. Get computer selection
 
@@ -45,9 +46,9 @@ const gamePlayController = () => {
     }
 };
 
-const uiPlayController = () => {
-    if (state.gameIsPlaying) {}
-};
+// const uiPlayController = () => {
+//     if (state.gameIsPlaying) {}
+// };
 
 // const gameController = () => {
 //     if (state.gameIsPlaying) {
@@ -81,30 +82,30 @@ const uiPlayController = () => {
 //     }
 // };
 
-const playAgainController = () => {
-    resetUi(state.gameIsPlaying);
-};
+// const playAgainController = () => {
+//     resetUi(state.gameIsPlaying);
+// };
 
-const uiController = () => {
-    if (state.gameIsPlaying) {
-        // 0. Reset UI score
-        renderScore(state);
-        // 1. Set action buttons to active state
-        setActionButtons(state.gameIsPlaying);
-    } else {
-        state.currentScore = 0;
-        state.playerSelection = 0;
-        state.computerSelection = 0;
-        renderScore(state);
-        setActionButtons(state.gameIsPlaying);
-    }
-};
+// const uiController = () => {
+//     if (state.gameIsPlaying) {
+//         // 0. Reset UI score
+//         renderScore(state);
+//         // 1. Set action buttons to active state
+//         setActionButtons(state.gameIsPlaying);
+//     } else {
+//         state.currentScore = 0;
+//         state.playerSelection = 0;
+//         state.computerSelection = 0;
+//         renderScore(state);
+//         setActionButtons(state.gameIsPlaying);
+//     }
+// };
 
-const playerSelected = (option) => {
-    if (state.gameIsPlaying) {
-        state.playerSelection = option;
-    }
-};
+// const playerSelected = (option) => {
+//     if (state.gameIsPlaying) {
+//         state.playerSelection = option;
+//     }
+// };
 
 const startNewGame = (playerName) => {
     // Set state variables
@@ -143,57 +144,68 @@ const verifyNewGame = () => {
 };
 
 /*
- ##### NEW ELEMENTS
+     EVENT LISTENERS
 */
+
+const { rock, paper, scissors } = optionElements;
+const optionsArr = [rock, paper, scissors];
+
+optionsArr.forEach((el) => {
+    el.addEventListener("click", (e) => {
+        console.log(el);
+    });
+});
+
+// const disableButtons = () => {
+//     rock.disabled = true;
+//     paper.disabled = true;
+//     scissors.disabled = true;
+// };
+
+// rock.addEventListener("click", (e) => {
+//     state.playerSelection = 0
+//     disableButtons();
+// });
+// rock.addEventListener("click", (e) => {
+//   state.playerSelection = 1;
+//   disableButtons();
+// });
+// rock.addEventListener("click", (e) => {
+//   state.playerSelection = 2;
+//   disableButtons();
+// });
+
 elements.newPlayerForm.addEventListener("submit", (e) => {
     e.preventDefault();
     verifyNewGame();
 });
 
+window.onload = (event) => {
+    elements.loaderBackground.style.display = "none";
+    elements.loader.style.display = "none";
+};
+
 // Event listeners
-elements.start_game.addEventListener("click", (e) => {
-    if (!state.gameIsPlaying) {
-        state.gameIsPlaying = true;
-        elements.start_game.textContent = "end game";
-        elements.start_game.style.background = "grey";
-        uiController();
-    } else {
-        state.gameIsPlaying = false;
-        elements.start_game.textContent = "start game";
-        elements.start_game.style.background = "blueviolet";
-        resetUi(true);
-        uiController();
-        setActionButtons(state.gameIsPlaying);
-    }
-});
+// elements.start_game.addEventListener("click", (e) => {
+//     if (!state.gameIsPlaying) {
+//         state.gameIsPlaying = true;
+//         elements.start_game.textContent = "end game";
+//         elements.start_game.style.background = "grey";
+//         uiController();
+//     } else {
+//         state.gameIsPlaying = false;
+//         elements.start_game.textContent = "start game";
+//         elements.start_game.style.background = "blueviolet";
+//         resetUi(true);
+//         uiController();
+//         setActionButtons(state.gameIsPlaying);
+//     }
+// });
 
-elements.rock.addEventListener("click", (e) => {
-    playerSelected(0);
-    gameController();
-});
-elements.paper.addEventListener("click", (e) => {
-    playerSelected(1);
-    gameController();
-});
-elements.scissors.addEventListener("click", (e) => {
-    playerSelected(2);
-    gameController();
-});
-
-elements.container_pending.addEventListener("click", (e) => {
-    if (e.target.classList.contains("game-buttons--play_again")) {
-        playAgainController();
-    } else {
-        return;
-    }
-});
-
-elements.rules_btn.addEventListener("click", (e) => {
-    modalView.openModal();
-});
-
-elements.modal.addEventListener("click", (e) => {
-    if (e.target.classList.contains("modal-close")) {
-        modalView.closeModal();
-    }
-});
+// elements.container_pending.addEventListener("click", (e) => {
+//     if (e.target.classList.contains("game-buttons--play_again")) {
+//         playAgainController();
+//     } else {
+//         return;
+//     }
+// });

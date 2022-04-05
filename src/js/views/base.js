@@ -1,22 +1,29 @@
 export const elements = {
     start_game: document.querySelector(".game-buttons--start"),
     new_game: document.querySelector(".game-buttons--new"),
-    rock: document.querySelector(".rock"),
-    paper: document.querySelector(".paper"),
-    scissors: document.querySelector(".scissors"),
+
     score: document.querySelector(".container-score--score"),
     container_controls: document.querySelector(".container-controls"),
     container_pending: document.querySelector(".container-pending"),
     rules_btn: document.querySelector(".game-buttons--rules"),
     modal: document.querySelector(".modal"),
     overlay: document.querySelector(".modal-overlay"),
-    // New elements
+    /* New Player Forms */
     newPlayerFormButton: document.querySelector(".modal-form--button"),
     newPlayerFormInput: document.querySelector(".modal-form--input"),
     newPlayerForm: document.querySelector(".modal-form"),
     newPlayerFormSubHeading: document.querySelector(".modal-heading--sub"),
+
+    // Loader
     loaderBackground: document.querySelector(".loader-bg"),
     loader: document.querySelector(".loader"),
+};
+
+export const optionElements = {
+    // gameElements
+    rock: document.querySelector(".option-01"),
+    paper: document.querySelector(".option-02"),
+    scissors: document.querySelector(".option-03"),
 };
 
 export const resetUi = (isPlaying) => {
