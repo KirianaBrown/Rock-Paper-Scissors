@@ -1,4 +1,7 @@
 export const elements = {
+    // Loader
+    loaderBackground: document.querySelector(".loader-bg"),
+    loader: document.querySelector(".loader"),
     // Modal Form
     modal: document.querySelector(".modal"),
     overlay: document.querySelector(".modal-overlay"),
@@ -7,9 +10,8 @@ export const elements = {
     newPlayerFormInput: document.querySelector(".modal-form--input"),
     newPlayerForm: document.querySelector(".modal-form"),
     newPlayerFormSubHeading: document.querySelector(".modal-heading--sub"),
-    // Loader
-    loaderBackground: document.querySelector(".loader-bg"),
-    loader: document.querySelector(".loader"),
+    // Game Result
+    gameResult: document.querySelector(".result-text"),
 };
 
 export const optionElements = {
@@ -22,6 +24,13 @@ export const optionElements = {
 export const selectionOptionElements = {
     player: document.querySelector(".game-selection--player"),
     computer: document.querySelector(".game-selection--computer"),
+};
+
+export const scoreElements = {
+    playerSm: document.querySelector(".score-value--player-sm"),
+    computerSm: document.querySelector(".score-value--computer-sm"),
+    playerLg: document.querySelector(".score-value--player-lg"),
+    computerLg: document.querySelector(".score-value--computer-lg"),
 };
 
 export const disableButtons = (options) => {

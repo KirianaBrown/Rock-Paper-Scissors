@@ -1,6 +1,6 @@
 import state from "./store/State";
 import { elements, optionElements, disableButtons } from "./views/base";
-import { renderScore } from "./views/scores";
+import { updateScores } from "./views/scores";
 import * as selectionsView from "./views/selections";
 import * as resultsView from "./views/results";
 import * as modalView from "./views/modal";
@@ -18,20 +18,21 @@ const gamePlayController = () => {
         console.log("Game play is LIVE");
         // 1. Get player selection
         const playerSelection = state.options[+state.playerSelection];
-        console.log(playerSelection);
 
         // 2. Get computer selection
         const computerSelection = state.options[Computer()];
-        console.log(computerSelection);
 
         // 3. Render selections to UI
         selectionsView.renderSelections(playerSelection, computerSelection);
 
         // 4. Compare scores
         const winner = CompareScores(playerSelection, computerSelection);
-        console.log(winner);
+
+        // 5. Display Result
+        resultsView.displayGameResult(winner);
 
         // 5. Update scores
+        updateScores(winner);
     } else {
         console.log("Game play is NOT live");
     }
@@ -96,8 +97,8 @@ const gamePlayController = () => {
 
 const startNewGame = (playerName) => {
     /*  
-              1. Set state playerName, close new player form and set up player selection board
-          */
+                        1. Set state playerName, close new player form and set up player selection board
+                    */
     state.playerName = playerName;
     state.isGamePlaying = true;
     formView.closeNewPlayerForm();
