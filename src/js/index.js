@@ -1,10 +1,7 @@
-import {
-    elements,
-    optionElements,
-    setActionButtons,
-    resetUi,
-} from "./views/base";
+import state from "./store/State";
+import { elements, optionElements, disableButtons } from "./views/base";
 import { renderScore } from "./views/scores";
+import * as selectionsView from "./views/selections";
 import * as resultsView from "./views/results";
 import * as modalView from "./views/modal";
 import * as formView from "./views/form";
@@ -16,39 +13,29 @@ import PlayerSelection from "./models/PlayerSelection";
 // IMPORT STYLESHEETS
 import "../sass/main.scss";
 
-const options = ["rock", "paper", "scissors"];
-
-const state = {
-    currentScore: 0,
-    computerSelection: 0,
-    playerSelection: 0,
-    computerWins: true,
-    gameIsPlaying: false,
-    result: "it's a tie",
-    playerName: "",
-    playerScore: 0,
-    computerScore: 0,
-};
-
 const gamePlayController = () => {
-    if (state.gameIsPlaying) {
+    if (state.isGamePlaying) {
         console.log("Game play is LIVE");
         // 1. Get player selection
-        const playerSelection = state.playerSelection;
+        const playerSelection = state.options[+state.playerSelection];
+        console.log(playerSelection);
 
         // 2. Get computer selection
+        const computerSelection = state.options[Computer()];
+        console.log(computerSelection);
 
-        // 3. Compare scores
+        // UI
+        selectionsView.renderSelections(playerSelection, computerSelection);
 
-        // 4. Update scores
+        // 3. Handle animation
+
+        // 4. Compare scores
+
+        // 5. Update scores
     } else {
         console.log("Game play is NOT live");
     }
 };
-
-// const uiPlayController = () => {
-//     if (state.gameIsPlaying) {}
-// };
 
 // const gameController = () => {
 //     if (state.gameIsPlaying) {
@@ -108,13 +95,13 @@ const gamePlayController = () => {
 // };
 
 const startNewGame = (playerName) => {
-    // Set state variables
+    /*  
+            1. Set state playerName, close new player form and set up player selection board
+        */
     state.playerName = playerName;
-    state.gameIsPlaying = true;
-    // Close new player form
+    state.isGamePlaying = true;
     formView.closeNewPlayerForm();
-    // Start game
-    gamePlayController();
+    setPlayerSelection();
 };
 
 const verifyNewGame = () => {
@@ -147,62 +134,31 @@ const verifyNewGame = () => {
      EVENT LISTENERS
 */
 
-const { rock, paper, scissors } = optionElements;
-const optionsArr = [rock, paper, scissors];
-
-const disableButtons = () => {
-    // rock.disabled = true;
-    // paper.disabled = true;
-    // scissors.disabled = true;
-
-    optionsArr.forEach((el) => {
-        el.disabled = true;
-        el.classList.remove("options-start-pulse");
-    });
-};
-
-optionsArr.forEach((el) => {
-    el.addEventListener("click", (e) => {
-        // Set state player value
-        state.playerSelection = el.value;
-        // disable selections
-        disableButtons();
-        // Add selected class
-        el.classList.add("options-selected");
-    });
-});
-
 elements.newPlayerForm.addEventListener("submit", (e) => {
     e.preventDefault();
     verifyNewGame();
 });
 
-window.onload = (event) => {
+const setPlayerSelection = () => {
+    // Get options avaliable
+    const { rock, paper, scissors } = optionElements;
+    const optionsArr = [rock, paper, scissors];
+
+    // Set and handle event listeners on each option
+    optionsArr.forEach((el) => {
+        el.addEventListener("click", (e) => {
+            // Set state
+            state.playerSelection = el.value;
+            // Handle display props of btns
+            disableButtons(optionsArr);
+            el.classList.add("options-selected");
+            // Set game play
+            gamePlayController();
+        });
+    });
+};
+
+window.onload = () => {
     elements.loaderBackground.style.display = "none";
     elements.loader.style.display = "none";
 };
-
-// Event listeners
-// elements.start_game.addEventListener("click", (e) => {
-//     if (!state.gameIsPlaying) {
-//         state.gameIsPlaying = true;
-//         elements.start_game.textContent = "end game";
-//         elements.start_game.style.background = "grey";
-//         uiController();
-//     } else {
-//         state.gameIsPlaying = false;
-//         elements.start_game.textContent = "start game";
-//         elements.start_game.style.background = "blueviolet";
-//         resetUi(true);
-//         uiController();
-//         setActionButtons(state.gameIsPlaying);
-//     }
-// });
-
-// elements.container_pending.addEventListener("click", (e) => {
-//     if (e.target.classList.contains("game-buttons--play_again")) {
-//         playAgainController();
-//     } else {
-//         return;
-//     }
-// });
