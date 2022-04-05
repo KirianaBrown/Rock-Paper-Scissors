@@ -4,16 +4,16 @@ const CompareScores = (player, computer) => {
     } else {
         let winner = "";
 
-        if (player === 0) {
-            winner = computer === 1 ? "computer" : "player";
+        if (player === "rock") {
+            winner = computer === "paper" ? "computer" : "player";
         }
 
-        if (player === 1) {
-            winner = computer === 2 ? "computer" : "player";
+        if (player === "paper") {
+            winner = computer === "scissors" ? "computer" : "player";
         }
 
-        if (player === 2) {
-            winner = computer === 0 ? "computer" : "player";
+        if (player === "scissors") {
+            winner = computer === "rock" ? "computer" : "player";
         }
 
         return winner;

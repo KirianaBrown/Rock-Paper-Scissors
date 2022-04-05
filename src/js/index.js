@@ -24,12 +24,12 @@ const gamePlayController = () => {
         const computerSelection = state.options[Computer()];
         console.log(computerSelection);
 
-        // UI
+        // 3. Render selections to UI
         selectionsView.renderSelections(playerSelection, computerSelection);
 
-        // 3. Handle animation
-
         // 4. Compare scores
+        const winner = CompareScores(playerSelection, computerSelection);
+        console.log(winner);
 
         // 5. Update scores
     } else {
@@ -96,8 +96,8 @@ const gamePlayController = () => {
 
 const startNewGame = (playerName) => {
     /*  
-            1. Set state playerName, close new player form and set up player selection board
-        */
+              1. Set state playerName, close new player form and set up player selection board
+          */
     state.playerName = playerName;
     state.isGamePlaying = true;
     formView.closeNewPlayerForm();
