@@ -14,18 +14,14 @@ import Computer from "./models/Computer";
 import CompareScores from "./models/CompareScores";
 import NewGameValidation from "./models/NewGameValidation";
 import PlayerSelection from "./models/PlayerSelection";
+import WinnerCheck from "./models/WinnerCheck";
 
 // IMPORT STYLESHEETS
 import "../sass/main.scss";
 
 const gamePlayController = () => {
     if (state.isGamePlaying) {
-        if (!state.haveAWinner) {
-            console.log("Start A ROUND");
-            roundController();
-        } else {
-            console.log("We have a winner!");
-        }
+        roundController();
     } else {
         console.log("Game play is NOT live");
     }
@@ -41,6 +37,8 @@ const roundController = () => {
      * 6. Update game scores
      * 7. reset gameboard
      */
+
+    state.roundsCount++;
 
     // 1. Get player selection
     const playerSelection = state.options[+state.playerSelection];
@@ -61,12 +59,33 @@ const roundController = () => {
     updateScores(winner);
 
     // 6. Reset gameBoard
-    setTimeout(() => {
-        activateButtons(state.buttons);
-    }, 1500);
+    activateButtons(state.buttons);
+
+    WinnerCheck();
+
+    if (state.haveAWinner) {
+        console.log("YAY WINNER!");
+        // call winner function
+        weHaveAWinner();
+    }
+
+    console.log(
+        `Inside round controller, current situation: roundNumber: ${state.roundsCount}, playerScore: ${state.playerScore}, computerScore: ${state.computerScore}, haveAWinner: ${state.haveAWinner}`
+    );
 };
 
-const resetGameBoard = () => {};
+const weHaveAWinner = () => {
+    /**
+     * show modal that displays winner
+     * update color of winner number
+     * pop modal which includes 'play again btn'
+     * pop modal which has new player 'form'
+     */
+
+    disableButtons(state.buttons);
+
+    resultsView.displayGameResult("we have a winner");
+};
 
 const startNewGame = (playerName) => {
     state.playerName = playerName;

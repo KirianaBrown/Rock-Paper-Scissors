@@ -26,7 +26,6 @@ export const updateScores = (roundWinner) => {
     }
 
     if (roundWinner === "draw") {
-        console.log("It was a draw");
         counterAnimation(computerScoreElement);
         counterAnimation(playerScoreElement);
     }
