@@ -4,6 +4,8 @@ import state from "../store/State";
 export const updateScores = (roundWinner) => {
     let playerScoreElement;
     let computerScoreElement;
+    let playerScoreName;
+    let computerScoreName;
 
     screen.width > 800 ?
         (playerScoreElement = scoreElements.playerLg) :
@@ -12,6 +14,14 @@ export const updateScores = (roundWinner) => {
     screen.width > 800 ?
         (computerScoreElement = scoreElements.computerLg) :
         scoreElements.computerSm;
+
+    screen.width > 800 ?
+        (playerScoreName = scoreElements.playerNameLg) :
+        scoreElements.playerNameSm;
+
+    screen.width > 800 ?
+        (computerScoreName = scoreElements.computerNameLg) :
+        scoreElements.computerNameSm;
 
     // update state scores
     console.log(roundWinner);
@@ -29,12 +39,18 @@ export const updateScores = (roundWinner) => {
         if (curComputerScore === curPlayerScore) {
             playerScoreElement.style.color = "white";
             computerScoreElement.style.color = "white";
+            playerScoreName.style.color = "white";
+            computerScoreName.style.color = "white";
         } else if (curComputerScore < curPlayerScore) {
             playerScoreElement.style.color = "#ff00bb";
             computerScoreElement.style.color = "white";
+            playerScoreName.style.color = "#ff00bb";
+            computerScoreName.style.color = "white";
         } else {
             playerScoreElement.style.color = "white";
             computerScoreElement.style.color = "#ff00bb";
+            playerScoreName.style.color = "white";
+            computerScoreName.style.color = "#ff00bb";
         }
     }
 
@@ -45,12 +61,18 @@ export const updateScores = (roundWinner) => {
         if (curComputerScore === curPlayerScore) {
             playerScoreElement.style.color = "white";
             computerScoreElement.style.color = "white";
+            playerScoreName.style.color = "white";
+            computerScoreName.style.color = "white";
         } else if (curComputerScore > curPlayerScore) {
             playerScoreElement.style.color = "white";
             computerScoreElement.style.color = "#ff00bb";
+            playerScoreName.style.color = "white";
+            computerScoreName.style.color = "#ff00bb";
         } else {
             playerScoreElement.style.color = "#ff00bb";
             computerScoreElement.style.color = "white";
+            playerScoreName.style.color = "#ff00bb";
+            computerScoreName.style.color = "white";
         }
     }
 
@@ -60,12 +82,18 @@ export const updateScores = (roundWinner) => {
         if (curComputerScore === curPlayerScore) {
             playerScoreElement.style.color = "white";
             computerScoreElement.style.color = "white";
+            playerScoreName.style.color = "white";
+            computerScoreName.style.color = "white";
         } else if (curComputerScore > curPlayerScore) {
             playerScoreElement.style.color = "white";
             computerScoreElement.style.color = "#ff00bb";
+            playerScoreName.style.color = "white";
+            computerScoreName.style.color = "#ff00bb";
         } else {
             playerScoreElement.style.color = "#ff00bb";
             computerScoreElement.style.color = "white";
+            playerScoreName.style.color = "#ff00bb";
+            computerScoreName.style.color = "white";
         }
     }
 };

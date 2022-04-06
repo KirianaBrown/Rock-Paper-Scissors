@@ -36,6 +36,10 @@ export const scoreElements = {
     computerSm: document.querySelector(".score-value--computer-sm"),
     playerLg: document.querySelector(".score-value--player-lg"),
     computerLg: document.querySelector(".score-value--computer-lg"),
+    playerNameSm: document.querySelector(".score-name--player-sm"),
+    computerNameSm: document.querySelector(".score-name--computer-sm"),
+    playerNameLg: document.querySelector(".score-name--player-lg"),
+    computerNameLg: document.querySelector(".score-name--computer-lg"),
 };
 
 export const disableButtons = (options) => {
