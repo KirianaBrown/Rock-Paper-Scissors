@@ -1,102 +1,77 @@
 import { scoreElements } from "./base";
 import state from "../store/State";
 
+let playerScoreElement = scoreElements.playerLg;
+let computerScoreElement = scoreElements.computerLg;
+let playerScoreName = scoreElements.playerNameLg;
+let computerScoreName = scoreElements.computerNameLg;
+
+if (state.screenSuffix === "sm") {
+    playerScoreElement = scoreElements.playerSm;
+    computerScoreElement = scoreElements.computerSm;
+    playerScoreName = scoreElements.playerNameSm;
+    computerScoreName = scoreElements.computerNameSm;
+}
+
+const playerScoreElements = [playerScoreElement, playerScoreName];
+const computerScoreElements = [computerScoreElement, computerScoreName];
+const allElements = [...playerScoreElements, ...computerScoreElements];
+
+function addStyle(element, color) {
+    console.log("called the add style function");
+    console.log(element);
+    console.log(color);
+    element.style.color = color;
+}
+
+const isComputerLeading = (yes) => {
+    if (yes) {
+        playerScoreElements.forEach((el) => addStyle(el, "white"));
+        computerScoreElements.forEach((el) => addStyle(el, "#ff00bb"));
+    } else {
+        computerScoreElements.forEach((el) => addStyle(el, "white"));
+        playerScoreElements.forEach((el) => addStyle(el, "#ff00bb"));
+    }
+};
+
 export const updateScores = (roundWinner) => {
-    let playerScoreElement;
-    let computerScoreElement;
-    let playerScoreName;
-    let computerScoreName;
-
-    screen.width > 800 ?
-        (playerScoreElement = scoreElements.playerLg) :
-        scoreElements.playerSm;
-
-    screen.width > 800 ?
-        (computerScoreElement = scoreElements.computerLg) :
-        scoreElements.computerSm;
-
-    screen.width > 800 ?
-        (playerScoreName = scoreElements.playerNameLg) :
-        scoreElements.playerNameSm;
-
-    screen.width > 800 ?
-        (computerScoreName = scoreElements.computerNameLg) :
-        scoreElements.computerNameSm;
-
     // update state scores
-    console.log(roundWinner);
-    roundWinner === "computer" && state.computerScore++;
     roundWinner === "player" && state.playerScore++;
+    roundWinner === "computer" && state.computerScore++;
 
     // extract current scores
     const curPlayerScore = state.playerScore;
     const curComputerScore = state.computerScore;
 
-    if (roundWinner === "player") {
-        counterAnimation(playerScoreElement);
-        playerScoreElement.innerHTML = state.playerScore;
+    // Handle round changes
+    roundWinner === "player" && counterAnimation(playerScoreElement);
+    roundWinner === "player" &&
+        setScoreText(playerScoreElement, state.playerScore);
 
-        if (curComputerScore === curPlayerScore) {
-            playerScoreElement.style.color = "white";
-            computerScoreElement.style.color = "white";
-            playerScoreName.style.color = "white";
-            computerScoreName.style.color = "white";
-        } else if (curComputerScore < curPlayerScore) {
-            playerScoreElement.style.color = "#ff00bb";
-            computerScoreElement.style.color = "white";
-            playerScoreName.style.color = "#ff00bb";
-            computerScoreName.style.color = "white";
-        } else {
-            playerScoreElement.style.color = "white";
-            computerScoreElement.style.color = "#ff00bb";
-            playerScoreName.style.color = "white";
-            computerScoreName.style.color = "#ff00bb";
-        }
+    roundWinner === "computer" && counterAnimation(computerScoreElement);
+    roundWinner === "computer" &&
+        setScoreText(computerScoreElement, state.computerScore);
+
+    roundWinner === "draw" && counterAnimation(computerScoreElement);
+    roundWinner === "draw" && counterAnimation(playerScoreElement);
+
+    // Set styles based on game lead
+    if (curComputerScore > curPlayerScore) {
+        isComputerLeading(true);
     }
 
-    if (roundWinner === "computer") {
-        counterAnimation(computerScoreElement);
-        computerScoreElement.innerHTML = state.computerScore;
-
-        if (curComputerScore === curPlayerScore) {
-            playerScoreElement.style.color = "white";
-            computerScoreElement.style.color = "white";
-            playerScoreName.style.color = "white";
-            computerScoreName.style.color = "white";
-        } else if (curComputerScore > curPlayerScore) {
-            playerScoreElement.style.color = "white";
-            computerScoreElement.style.color = "#ff00bb";
-            playerScoreName.style.color = "white";
-            computerScoreName.style.color = "#ff00bb";
-        } else {
-            playerScoreElement.style.color = "#ff00bb";
-            computerScoreElement.style.color = "white";
-            playerScoreName.style.color = "#ff00bb";
-            computerScoreName.style.color = "white";
-        }
+    if (curComputerScore < curPlayerScore) {
+        isComputerLeading(false);
     }
 
-    if (roundWinner === "draw") {
-        counterAnimation(computerScoreElement);
-        counterAnimation(playerScoreElement);
-        if (curComputerScore === curPlayerScore) {
-            playerScoreElement.style.color = "white";
-            computerScoreElement.style.color = "white";
-            playerScoreName.style.color = "white";
-            computerScoreName.style.color = "white";
-        } else if (curComputerScore > curPlayerScore) {
-            playerScoreElement.style.color = "white";
-            computerScoreElement.style.color = "#ff00bb";
-            playerScoreName.style.color = "white";
-            computerScoreName.style.color = "#ff00bb";
-        } else {
-            playerScoreElement.style.color = "#ff00bb";
-            computerScoreElement.style.color = "white";
-            playerScoreName.style.color = "#ff00bb";
-            computerScoreName.style.color = "white";
-        }
+    if (curComputerScore === curPlayerScore) {
+        allElements.forEach((el) => addStyle(el, "white"));
     }
 };
+
+function setScoreText(el, score) {
+    el.innerHTML = score;
+}
 
 function counterAnimation(element) {
     element.animate(
@@ -106,7 +81,7 @@ function counterAnimation(element) {
             { transform: "rotateX(180deg)" },
             { transform: "rotateX(0deg)" },
         ], {
-            // tiempos
+            // settings
             duration: 200,
             iterations: 1,
             easing: "ease-out",
