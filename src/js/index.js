@@ -5,8 +5,10 @@ import {
     disableButtons,
     activateButtons,
 } from "./views/base";
+import { rotateImages } from "./views/rotate";
 import { updateScores } from "./views/scores";
 import { setPlayerName } from "./views/playerName";
+import { animateRoundWinner } from "./views/animate";
 import * as selectionsView from "./views/selections";
 import * as resultsView from "./views/results";
 import * as modalView from "./views/modal";
@@ -29,46 +31,81 @@ const gamePlayController = () => {
 };
 
 const roundController = () => {
-    /**
-     * 1. Play a round
-     * 2. Get playersSelection
-     * 3. Generate Computer Selection
-     * 4. Determine round winner
-     * 5. Display round result
-     * 6. Update game scores
-     * 7. reset gameboard
-     */
+    // 1. Animate selections
+    function clearAnimation() {
+        clearInterval(rotateSelections);
+    }
 
-    state.roundsCount++;
+    rotateImages();
+    const rotateSelections = setInterval(rotateImages, 35);
+    setTimeout(clearAnimation, 400);
 
-    // 1. Get player selection
-    const playerSelection = state.options[+state.playerSelection];
+    // 2. Handle round selections
 
-    // 2. Get computer selection
-    const computerSelection = state.options[Computer()];
+    setTimeout(() => {
+        // a. selections
+        const selections = {
+            player: state.options[+state.playerSelection],
+            computer: state.options[Computer()],
+        };
+
+        console.log(state.screenSuffix);
+
+        // b. render selections
+        selectionsView.renderSelections(selections.player, selections.computer);
+
+        // c. Get winner
+        const winner = CompareScores(selections);
+
+        // d. Update state variables
+        state.roundWinner.push(winner);
+        state.playerSelections.push(selections.player);
+        state.computerSelections.push(selections.computer);
+        state.roundsCount++;
+
+        // e. Handle each round outcome
+        animateRoundWinner(winner);
+    }, 600);
+
+    // setTimeout(() => {
+    //     // a. Render actual
+    //     selectionsView.renderSelections(selections.player, selections.computer);
+    //     // b. update state with round result
+    //     state.playerSelections.push(selections.player);
+    //     state.computerSelections.push(selections.computer);
+    //     // c. compare and return round winner
+    //     // const winner = CompareScores(selections.player, selections.computer);
+    //     // d. update scores
+    //     // state.roundWinner.push(winner);
+    //     // resultsView.displayGameResult(winner);
+    //     // e.
+    //     activateButtons(state.buttons);
+    // }, 600);
+
+    // 4. Handle round results
 
     // 3. Render selections to UI
-    selectionsView.renderSelections(playerSelection, computerSelection);
+    // selectionsView.renderSelections(playerSelection, computerSelection);
 
-    // 4. Compare scores
-    const winner = CompareScores(playerSelection, computerSelection);
+    // // 4. Compare scores
+    // const winner = CompareScores(playerSelection, computerSelection);
 
-    // 5. Display Result
-    resultsView.displayGameResult(winner);
+    // // 5. Display Result
+    // resultsView.displayGameResult(winner);
 
-    // 5. Update scores
-    updateScores(winner);
+    // // 5. Update scores
+    // updateScores(winner);
 
-    // 6. Reset gameBoard
+    // // 6. Reset gameBoard
     activateButtons(state.buttons);
 
-    WinnerCheck();
+    // WinnerCheck();
 
-    if (state.haveAWinner) {
-        console.log("YAY WINNER!");
-        // call winner function
-        weHaveAWinner();
-    }
+    // if (state.haveAWinner) {
+    //     console.log("YAY WINNER!");
+    //     // call winner function
+    //     weHaveAWinner();
+    // }
 
     console.log(
         `Inside round controller, current situation: roundNumber: ${state.roundsCount}, playerScore: ${state.playerScore}, computerScore: ${state.computerScore}, haveAWinner: ${state.haveAWinner}`
@@ -83,9 +120,14 @@ const weHaveAWinner = () => {
      * pop modal which has new player 'form'
      */
 
+    // 1. Disable buttons
     disableButtons(state.buttons);
 
+    // 2. Update game result with relevant text
     resultsView.displayGameResult("we have a winner");
+
+    // 3. Color selected player as winner
+    resultsView.highlightWinner(state.playerScore, state.computerScore);
 };
 
 const startNewGame = (playerName) => {
@@ -94,6 +136,8 @@ const startNewGame = (playerName) => {
     formView.closeNewPlayerForm();
     setPlayerSelection();
     setPlayerName(state.playerName);
+    state.screenSuffix = screen.width > 800 ? "lg" : "sm";
+    console.log(state.screenSuffix);
 };
 
 const verifyNewGame = () => {

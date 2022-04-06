@@ -1,4 +1,6 @@
-const CompareScores = (player, computer) => {
+const CompareScores = (selections) => {
+    const { player, computer } = selections;
+
     if (player === computer) {
         return "draw";
     } else {

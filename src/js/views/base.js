@@ -12,6 +12,7 @@ export const elements = {
     newPlayerFormSubHeading: document.querySelector(".modal-heading--sub"),
     // Player name
     playerName: document.querySelectorAll(".score-name--player"),
+    computerName: document.querySelectorAll(".score-name--computer"),
     // Game Result
     gameResult: document.querySelector(".result-text"),
 };
@@ -26,6 +27,8 @@ export const optionElements = {
 export const selectionOptionElements = {
     player: document.querySelector(".game-selection--player"),
     computer: document.querySelector(".game-selection--computer"),
+    playerImage: document.querySelector(".game-selection-img--player"),
+    computerImage: document.querySelector(".game-selection-img--computer"),
 };
 
 export const scoreElements = {
