@@ -6,6 +6,7 @@ import {
     activateButtons,
 } from "./views/base";
 import { updateScores } from "./views/scores";
+import { setPlayerName } from "./views/playerName";
 import * as selectionsView from "./views/selections";
 import * as resultsView from "./views/results";
 import * as modalView from "./views/modal";
@@ -92,6 +93,7 @@ const startNewGame = (playerName) => {
     state.isGamePlaying = true;
     formView.closeNewPlayerForm();
     setPlayerSelection();
+    setPlayerName(state.playerName);
 };
 
 const verifyNewGame = () => {
@@ -108,9 +110,9 @@ const verifyNewGame = () => {
         }
         if (counter === 3) {
             formView.newPlayerFormFeedback(
-                "Okay I see you don't want to give me a name - let's go with BertyBot then!"
+                "Okay I see you don't want to give me a name - let's go with BERTYBOT then!"
             );
-            startNewGame("BertyBot");
+            startNewGame("BERTYBOT");
         }
     } else {
         formView.newPlayerFormFeedback(

@@ -10,6 +10,8 @@ export const elements = {
     newPlayerFormInput: document.querySelector(".modal-form--input"),
     newPlayerForm: document.querySelector(".modal-form"),
     newPlayerFormSubHeading: document.querySelector(".modal-heading--sub"),
+    // Player name
+    playerName: document.querySelectorAll(".score-name--player"),
     // Game Result
     gameResult: document.querySelector(".result-text"),
 };
