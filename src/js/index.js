@@ -4,6 +4,7 @@ import {
     optionElements,
     disableButtons,
     activateButtons,
+    scoreElements,
 } from "./views/base";
 import { rotateImages } from "./views/rotate";
 import { updateScores } from "./views/scores";
@@ -49,8 +50,6 @@ const roundController = () => {
             computer: state.options[Computer()],
         };
 
-        console.log(state.screenSuffix);
-
         // b. render selections
         selectionsView.renderSelections(selections.player, selections.computer);
 
@@ -65,6 +64,7 @@ const roundController = () => {
 
         // e. Handle each round outcome
         animateRoundWinner(winner);
+        updateScores(winner);
     }, 600);
 
     // setTimeout(() => {
@@ -137,7 +137,6 @@ const startNewGame = (playerName) => {
     setPlayerSelection();
     setPlayerName(state.playerName);
     state.screenSuffix = screen.width > 800 ? "lg" : "sm";
-    console.log(state.screenSuffix);
 };
 
 const verifyNewGame = () => {
