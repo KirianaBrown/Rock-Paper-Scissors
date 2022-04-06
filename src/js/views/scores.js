@@ -22,21 +22,19 @@ export const updateScores = (roundWinner) => {
     const curPlayerScore = state.playerScore;
     const curComputerScore = state.computerScore;
 
-    console.log(curPlayerScore);
-    console.log(curComputerScore);
-
     if (roundWinner === "player") {
         counterAnimation(playerScoreElement);
         playerScoreElement.innerHTML = state.playerScore;
 
         if (curComputerScore === curPlayerScore) {
-            bothTied();
+            playerScoreElement.style.color = "white";
+            computerScoreElement.style.color = "white";
         } else if (curComputerScore < curPlayerScore) {
-            leader("player");
-            behind("computer");
+            playerScoreElement.style.color = "green";
+            computerScoreElement.style.color = "red";
         } else {
-            leader("computer");
-            behind("player");
+            playerScoreElement.style.color = "red";
+            computerScoreElement.style.color = "green";
         }
     }
 
@@ -45,13 +43,14 @@ export const updateScores = (roundWinner) => {
         computerScoreElement.innerHTML = state.computerScore;
 
         if (curComputerScore === curPlayerScore) {
-            bothTied();
+            playerScoreElement.style.color = "white";
+            computerScoreElement.style.color = "white";
         } else if (curComputerScore > curPlayerScore) {
-            leader("computer");
-            behind("player");
+            playerScoreElement.style.color = "red";
+            computerScoreElement.style.color = "green";
         } else {
-            leader("player");
-            behind("computer");
+            playerScoreElement.style.color = "green";
+            computerScoreElement.style.color = "red";
         }
     }
 
@@ -77,16 +76,4 @@ function counterAnimation(element) {
             easing: "ease-out",
         }
     );
-}
-
-function bothTied() {
-    console.log("both tied");
-}
-
-function leader(who) {
-    console.log(`${who} is currently leading`);
-}
-
-function behind(who) {
-    console.log(`${who} is currently behind`);
 }
