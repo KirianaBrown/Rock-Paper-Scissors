@@ -30,11 +30,11 @@ export const updateScores = (roundWinner) => {
             playerScoreElement.style.color = "white";
             computerScoreElement.style.color = "white";
         } else if (curComputerScore < curPlayerScore) {
-            playerScoreElement.style.color = "green";
-            computerScoreElement.style.color = "red";
+            playerScoreElement.style.color = "#ff00bb";
+            computerScoreElement.style.color = "white";
         } else {
-            playerScoreElement.style.color = "red";
-            computerScoreElement.style.color = "green";
+            playerScoreElement.style.color = "white";
+            computerScoreElement.style.color = "#ff00bb";
         }
     }
 
@@ -46,19 +46,27 @@ export const updateScores = (roundWinner) => {
             playerScoreElement.style.color = "white";
             computerScoreElement.style.color = "white";
         } else if (curComputerScore > curPlayerScore) {
-            playerScoreElement.style.color = "red";
-            computerScoreElement.style.color = "green";
+            playerScoreElement.style.color = "white";
+            computerScoreElement.style.color = "#ff00bb";
         } else {
-            playerScoreElement.style.color = "green";
-            computerScoreElement.style.color = "red";
+            playerScoreElement.style.color = "#ff00bb";
+            computerScoreElement.style.color = "white";
         }
     }
 
     if (roundWinner === "draw") {
         counterAnimation(computerScoreElement);
         counterAnimation(playerScoreElement);
-        computerScoreElement.style.color = "white";
-        playerScoreElement.style.color = "white";
+        if (curComputerScore === curPlayerScore) {
+            playerScoreElement.style.color = "white";
+            computerScoreElement.style.color = "white";
+        } else if (curComputerScore > curPlayerScore) {
+            playerScoreElement.style.color = "white";
+            computerScoreElement.style.color = "#ff00bb";
+        } else {
+            playerScoreElement.style.color = "#ff00bb";
+            computerScoreElement.style.color = "white";
+        }
     }
 };
 
