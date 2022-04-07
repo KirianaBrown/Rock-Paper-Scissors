@@ -17,13 +17,6 @@ const playerScoreElements = [playerScoreElement, playerScoreName];
 const computerScoreElements = [computerScoreElement, computerScoreName];
 const allElements = [...playerScoreElements, ...computerScoreElements];
 
-function addStyle(element, color) {
-    console.log("called the add style function");
-    console.log(element);
-    console.log(color);
-    element.style.color = color;
-}
-
 const isComputerLeading = (yes) => {
     if (yes) {
         playerScoreElements.forEach((el) => addStyle(el, "white"));
@@ -68,6 +61,10 @@ export const updateScores = (roundWinner) => {
         allElements.forEach((el) => addStyle(el, "white"));
     }
 };
+
+function addStyle(element, color) {
+    element.style.color = color;
+}
 
 function setScoreText(el, score) {
     el.innerHTML = score;

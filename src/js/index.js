@@ -42,7 +42,6 @@ const roundController = () => {
     setTimeout(clearAnimation, 400);
 
     // 2. Handle round selections
-
     setTimeout(() => {
         // a. selections
         const selections = {
@@ -57,59 +56,29 @@ const roundController = () => {
         const winner = CompareScores(selections);
 
         // d. Update state variables
-        state.roundWinner.push(winner);
-        state.playerSelections.push(selections.player);
-        state.computerSelections.push(selections.computer);
+        const roundResult = {
+            ...selections,
+            winner,
+        };
+
+        state.roundResults.push(roundResult);
         state.roundsCount++;
 
         // e. Handle each round outcome
         animateRoundWinner(winner);
         updateScores(winner);
+
+        // f. check game winner
+        WinnerCheck();
+
+        // g. Handle if winner
+        if (state.haveAWinner) {
+            weHaveAWinner();
+        } else {
+            // h. reset gameboard to play another round
+            activateButtons(state.buttons);
+        }
     }, 600);
-
-    // setTimeout(() => {
-    //     // a. Render actual
-    //     selectionsView.renderSelections(selections.player, selections.computer);
-    //     // b. update state with round result
-    //     state.playerSelections.push(selections.player);
-    //     state.computerSelections.push(selections.computer);
-    //     // c. compare and return round winner
-    //     // const winner = CompareScores(selections.player, selections.computer);
-    //     // d. update scores
-    //     // state.roundWinner.push(winner);
-    //     // resultsView.displayGameResult(winner);
-    //     // e.
-    //     activateButtons(state.buttons);
-    // }, 600);
-
-    // 4. Handle round results
-
-    // 3. Render selections to UI
-    // selectionsView.renderSelections(playerSelection, computerSelection);
-
-    // // 4. Compare scores
-    // const winner = CompareScores(playerSelection, computerSelection);
-
-    // // 5. Display Result
-    // resultsView.displayGameResult(winner);
-
-    // // 5. Update scores
-    // updateScores(winner);
-
-    // // 6. Reset gameBoard
-    activateButtons(state.buttons);
-
-    // WinnerCheck();
-
-    // if (state.haveAWinner) {
-    //     console.log("YAY WINNER!");
-    //     // call winner function
-    //     weHaveAWinner();
-    // }
-
-    console.log(
-        `Inside round controller, current situation: roundNumber: ${state.roundsCount}, playerScore: ${state.playerScore}, computerScore: ${state.computerScore}, haveAWinner: ${state.haveAWinner}`
-    );
 };
 
 const weHaveAWinner = () => {
@@ -119,6 +88,8 @@ const weHaveAWinner = () => {
      * pop modal which includes 'play again btn'
      * pop modal which has new player 'form'
      */
+    // 0. Set state
+    state.haveAWinner = true;
 
     // 1. Disable buttons
     disableButtons(state.buttons);
