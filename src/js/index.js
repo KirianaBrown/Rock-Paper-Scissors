@@ -10,6 +10,7 @@ import { rotateImages } from "./views/rotate";
 import { updateScores } from "./views/scores";
 import { setPlayerName } from "./views/playerName";
 import { animateRoundWinner } from "./views/animate";
+import { createModal } from "./views/modal";
 import * as selectionsView from "./views/selections";
 import * as resultsView from "./views/results";
 import * as modalView from "./views/modal";
@@ -99,6 +100,15 @@ const weHaveAWinner = () => {
 
     // 3. Color selected player as winner
     resultsView.highlightWinner(state.playerScore, state.computerScore);
+
+    // 4. show game modal
+    const gameResults = {
+        roundResults: [...state.roundResults],
+        playerTotal: state.playerScore,
+        computerTotal: state.computerScore,
+    };
+
+    createModal(gameResults);
 };
 
 const startNewGame = (playerName) => {

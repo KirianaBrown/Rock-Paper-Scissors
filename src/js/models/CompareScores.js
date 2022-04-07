@@ -4,7 +4,7 @@ const CompareScores = (selections) => {
     if (player === computer) {
         return "draw";
     } else {
-        let winner = "";
+        let winner;
 
         if (player === "rock") {
             winner = computer === "paper" ? "computer" : "player";
