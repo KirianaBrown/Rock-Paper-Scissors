@@ -126,6 +126,25 @@
             @include text-shadow;
         }
     }
+    &-round {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        margin: 0 auto;
+        &-icon {
+            background-color: $color-white;
+        }
+        & img {
+            width: 4rem;
+            height: 4rem;
+            padding: .5rem;
+            border: 1px solid #e9ecef;
+        }
+        &-won {
+            border: 5px solid $color-purple-light!important;
+        }
+    }
     &-overlay {
         height: 100vh;
         width: 100vw;
