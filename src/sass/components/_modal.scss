@@ -170,6 +170,11 @@
     }
 }
 
+.roundResult {
+    margin: .5rem;
+    color: rgba(245, 245, 245, 0.753);
+}
+
 @media only screen and (min-width: 500px) and (max-width: 900px) {
     .modal {
         width: 70%;

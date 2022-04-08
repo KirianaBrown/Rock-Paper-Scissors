@@ -1,12 +1,4 @@
 export const createModal = (gameResults) => {
-    console.log(gameResults);
-
-    // roundResults {player: 'rock', computer:'paper', winner:'computer'}
-    // computerTotal
-    // playerTotal
-
-    let roundResults = [];
-
     const winner =
         gameResults.computerTotal > gameResults.playerTotal ? "computer" : "player";
 
@@ -50,7 +42,7 @@ export const createModal = (gameResults) => {
 };
 
 const rmTrailingComma = () => {
-    const a = document.querySelectorAll(".testing");
+    const a = document.querySelectorAll(".roundResult");
 
     a.forEach((el) => {
         el.parentNode.removeChild(el.nextSibling);
@@ -58,20 +50,18 @@ const rmTrailingComma = () => {
 };
 
 const createListEl = (result, i) => {
-    console.log(result, i);
-
     let html;
 
     if (result.winner === "draw") {
         html = `
-        <li class="testing">ROUND: ${i + 1} ${result.player} vs ${
+        <li class="roundResult">ROUND: ${i + 1} ${result.player} vs ${
       result.computer
     } - Draw </li>
         `;
     } else {
         html = `
-            <li class="testing">ROUND: ${i + 1} ${result.player} ${
-      result.winner === "player" ? "beat" : "lost"
+            <li class="roundResult">ROUND: ${i + 1} ${result.player} ${
+      result.winner === "player" ? "beat" : "lost to"
     } ${result.computer} - WINNER: ${result.winner} </li>
         `;
     }
