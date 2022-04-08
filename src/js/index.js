@@ -33,6 +33,7 @@ const gamePlayController = () => {
 };
 
 const roundController = () => {
+    disableButtons(state.buttons);
     // 1. Animate selections
     function clearAnimation() {
         clearInterval(rotateSelections);

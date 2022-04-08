@@ -14,19 +14,31 @@ export const createModal = (gameResults) => {
         <div class="results-modal-overlay ${
           winner === "player"
             ? "results-modal-overlay_won"
-            : "results-modal-overal_lost"
+            : "results-modal-overlay_lost"
         }"></div>
         <div class="results-modal ${
-          winner === "player" ? "results-modal_won" : "results-moda_lost"
+          winner === "player" ? "results-modal_won" : "results-modal_lost"
         } ">
-            <h1 class="results-modal--heading">${
+            <h1 class="results-modal-heading">${
               winner === "computer" ? "You LOST!" : "YOU WON"
             }</h1>
+
+            <div class="modal-players">
+                <img src="../img/player.svg" alt="Player icon" />
+                <p class="modal-heading">VS</p>
+                <img src="../img/robot.svg" alt="Robot icon" />
+            </div>
+
+            <div class="results-modal-scores">
+                <p>${gameResults.playerTotal}</p>
+                <p>${gameResults.computerTotal}</p>
+            </div>
             <ul>
-               ${gameResults.roundResults.map((el, index) =>
-                 createListEl(el, index)
-               )}
+      
+                ${gameResults.roundResults.map((el, i) => createListEl(el, i))}
+        
             </ul>
+
             <button>Play Again</button>
             <button>New Player </button>
         </div>
@@ -34,29 +46,34 @@ export const createModal = (gameResults) => {
     const el = document.body;
 
     el.insertAdjacentHTML("afterbegin", html);
+    rmTrailingComma();
 };
 
-const createListEl = (result, index) => {
+const rmTrailingComma = () => {
+    const a = document.querySelectorAll(".testing");
+
+    a.forEach((el) => {
+        el.parentNode.removeChild(el.nextSibling);
+    });
+};
+
+const createListEl = (result, i) => {
+    console.log(result, i);
+
     let html;
 
     if (result.winner === "draw") {
         html = `
-        <li>Round: ${index + 1} ${result.player} vs ${
+        <li class="testing">ROUND: ${i + 1} ${result.player} vs ${
       result.computer
     } - Draw </li>
         `;
     } else {
-        const winningHand =
-            result.winner === "player" ? result.player : result.computer;
-
-        const losingHand =
-            result.winner === "player" ? result.computer : result.player;
-
         html = `
-            <li> Round: ${
-              index + 1
-            } ${winningHand} beat ${losingHand} - Winner: ${result.winner}</li>
-            `;
+            <li class="testing">ROUND: ${i + 1} ${result.player} ${
+      result.winner === "player" ? "beat" : "lost"
+    } ${result.computer} - WINNER: ${result.winner} </li>
+        `;
     }
 
     return html;
