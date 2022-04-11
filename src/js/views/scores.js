@@ -1,4 +1,5 @@
 import { scoreElements } from "./base";
+import { elements } from "./base";
 import state from "../store/State";
 
 let playerScoreElement = scoreElements.playerLg;
@@ -68,6 +69,10 @@ function addStyle(element, color) {
 
 function setScoreText(el, score) {
     el.innerHTML = score;
+}
+
+function updateGameResultText(text) {
+    // elements.gameResult.textContent = text;
 }
 
 function counterAnimation(element) {

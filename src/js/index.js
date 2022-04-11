@@ -68,6 +68,7 @@ const roundController = () => {
         // e. Handle each round outcome
         animateRoundWinner(winner);
         updateScores(winner);
+        resultsView.updateGameResultText(winner);
 
         // f. check game winner
         WinnerCheck();
@@ -97,9 +98,6 @@ const weHaveAWinner = () => {
 
     // 2. Update game result with relevant text
     resultsView.displayGameResult("we have a winner");
-
-    // 3. Color selected player as winner
-    resultsView.highlightWinner(state.playerScore, state.computerScore);
 
     // 4. show game modal
     const gameResults = {

@@ -41,7 +41,7 @@ export const createModal = (gameResults) => {
                 )}
             </div>
             <div class="results-modal-btns">
-            <button class="btn-playAgain">Play Again</button> 
+            <button class="btn-playAgain">Rematch?</button> 
             <button class="btn-newGame">New Player</button>
 
             </div>
