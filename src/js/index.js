@@ -109,7 +109,9 @@ const weHaveAWinner = () => {
         computerTotal: state.computerScore,
     };
 
-    createModal(gameResults);
+    setTimeout(() => {
+        createModal(gameResults);
+    }, 500);
 };
 
 const startNewGame = (playerName) => {
@@ -174,6 +176,23 @@ const setPlayerSelection = () => {
         });
     });
 };
+
+const playAgain = () => {
+    setTimeout(() => {
+        window.location.reload();
+    }, 300);
+};
+
+const newGame = () => {
+    console.log("new player and new game needed");
+    console.log(state);
+};
+
+document.body.addEventListener("click", (event) => {
+    event.target.classList.contains("btn-playAgain") && playAgain();
+
+    event.target.classList.contains("btn-newGame") && newGame();
+});
 
 window.onload = () => {
     elements.loaderBackground.style.display = "none";

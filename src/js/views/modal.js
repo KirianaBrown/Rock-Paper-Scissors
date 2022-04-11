@@ -5,8 +5,6 @@ export const createModal = (gameResults) => {
     let playerResults = [];
     gameResults.roundResults.forEach((el) => playerResults.push(el.player));
 
-    console.log(playerResults);
-
     let html = `
         <div class="results-modal-overlay ${
           winner === "player"
@@ -42,9 +40,8 @@ export const createModal = (gameResults) => {
                   generateRoundImage(el, "computer")
                 )}
             </div>
-
-            <button>Play Again</button> 
-            <button>New Player </button>
+            <button class="btn-playAgain">Play Again</button> 
+            <button class="btn-newGame">New Player</button>
         </div>
     `;
     const el = document.body;
