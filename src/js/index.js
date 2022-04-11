@@ -4,7 +4,7 @@ import {
     optionElements,
     disableButtons,
     activateButtons,
-    scoreElements,
+    // scoreElements,
 } from "./views/base";
 import { rotateImages } from "./views/rotate";
 import { updateScores } from "./views/scores";
@@ -14,12 +14,10 @@ import { createModal } from "./views/modal";
 import { resetScoreElements } from "./views/reset";
 import * as selectionsView from "./views/selections";
 import * as resultsView from "./views/results";
-import * as modalView from "./views/modal";
 import * as formView from "./views/form";
 import Computer from "./models/Computer";
 import CompareScores from "./models/CompareScores";
 import NewGameValidation from "./models/NewGameValidation";
-import PlayerSelection from "./models/PlayerSelection";
 import WinnerCheck from "./models/WinnerCheck";
 
 // IMPORT STYLESHEETS
