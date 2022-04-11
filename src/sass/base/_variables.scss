@@ -37,7 +37,8 @@ sans-serif;
 }
 
 @mixin background-gradient {
-    background: linear-gradient(245deg, $color-yellow, orange);
+    // background: linear-gradient(245deg, $color-yellow, orange);
+    background: linear-gradient(245deg, $color-purple-dark, $color-purple-darker 20%, $color-purple-dark)
 }
 
 @mixin box-shadow($color) {
