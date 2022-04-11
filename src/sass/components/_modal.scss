@@ -98,9 +98,9 @@
     top: 25%;
     left: 50%;
     transform: translate(-50%, -20%);
-    width: 80%;
+    width: 100%;
     height: 80%;
-    padding: 1rem;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
@@ -110,7 +110,7 @@
         background-color: #760bd3ee;
     }
     &_lost {
-        background-color: #8b0b0bee;
+        background-color: #8b0b60ee;
     }
     &-scores {
         display: flex;
@@ -133,7 +133,7 @@
         width: 100%;
         margin: 0 auto;
         &-icon {
-            background-color: $color-white;
+            background-color: white;
         }
         & img {
             width: 4rem;
@@ -153,20 +153,20 @@
         top: 0;
         left: 0;
         transition: all ease .8s;
-        &_won {
-            background-color: #760bd3ee;
-        }
-        &_lost {
-            background-color: #8b0b0bee;
-        }
+        background-color: #1c0233ee;
     }
     &-heading {
         @include heading;
         font-size: 6rem;
         margin-bottom: 2rem;
     }
+    &-btns {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
     & button {
-        margin-top: 1rem;
+        margin: 2rem .5rem 0rem .5rem;
         cursor: pointer;
         padding: 1rem 1.75rem;
         @include box-shadow($color-purple-darker);

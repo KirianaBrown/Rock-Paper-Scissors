@@ -40,8 +40,11 @@ export const createModal = (gameResults) => {
                   generateRoundImage(el, "computer")
                 )}
             </div>
+            <div class="results-modal-btns">
             <button class="btn-playAgain">Play Again</button> 
             <button class="btn-newGame">New Player</button>
+
+            </div>
         </div>
     `;
     const el = document.body;
