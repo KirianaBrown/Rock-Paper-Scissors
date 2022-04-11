@@ -11,6 +11,7 @@ import { updateScores } from "./views/scores";
 import { setPlayerName } from "./views/playerName";
 import { animateRoundWinner } from "./views/animate";
 import { createModal } from "./views/modal";
+import { resetScoreElements } from "./views/reset";
 import * as selectionsView from "./views/selections";
 import * as resultsView from "./views/results";
 import * as modalView from "./views/modal";
@@ -177,15 +178,43 @@ const setPlayerSelection = () => {
     });
 };
 
+const resetGameTable = () => {
+    // 1. reset state
+    state.computerScore = 0;
+    state.playerScore = 0;
+    state.haveAWinner = false;
+    state.roundResults = [];
+    state.roundsCount = 0;
+    state.gameResult = "";
+    // 2. activate game buttons
+    activateButtons(state.buttons);
+
+    // 3. reset ui elements (scores & result)
+    resetScoreElements();
+
+    // 4. call gameplay function
+    state.isGamePlaying = true;
+    state.screenSuffix = screen.width > 800 ? "lg" : "sm";
+};
+
 const playAgain = () => {
+    resetGameTable();
+
     setTimeout(() => {
-        window.location.reload();
+        const resultsModalElement = document
+            .querySelector(".results-modal")
+            .remove();
+
+        const resultsModalOverlayElement = document
+            .querySelector(".results-modal-overlay")
+            .remove();
     }, 300);
 };
 
 const newGame = () => {
-    console.log("new player and new game needed");
-    console.log(state);
+    setTimeout(() => {
+        window.location.reload();
+    }, 300);
 };
 
 document.body.addEventListener("click", (event) => {
