@@ -1,3 +1,84 @@
+    // GENERAL
+    .heading {
+        &-sub {
+            text-align: center;
+            font-weight: 700;
+            color: $color-purple-light;
+            &::before {
+                content: " ------ "
+            }
+            &::after {
+                content: " ------ "
+            }
+        }
+    }
+    
+    .score {
+        width: 100%;
+        padding: 0rem 1rem;
+        text-align: center;
+        &-name {
+            color: white;
+            font-size: 3rem;
+            text-transform: uppercase;
+        }
+        &-value {
+            font-size: 8rem;
+            line-height: 1;
+            color: white;
+            -webkit-text-stroke: 1px grey;
+            font-weight: 900;
+            @include text-shadow;
+        }
+    }
+    
+    .game {
+        display: grid;
+        grid-template-columns: 40% 20% 40%;
+        align-items: center;
+        text-align: center;
+        &-selection {
+            & img {
+                max-width: 100%;
+            }
+        }
+        &-vs {
+            @include heading;
+        }
+    }
+    
+    .options {
+        padding: 1rem;
+        & button {
+            border: 1px solid $color-purple-dark;
+            @include box-shadow($color-purple-darker);
+            background: #e9ecef50;
+            display: flex;
+            align-items: center;
+            padding: .5rem;
+            margin: .75rem .5rem;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        &-start-pulse {
+            animation-name: pulse;
+            animation-timing-function: linear;
+            animation-duration: 1.5s;
+            animation-iteration-count: infinite;
+            &:hover {
+                transform: translateY(5px);
+                transform: scale(1.05);
+                border: .5rem dashed $color-purple-light;
+            }
+        }
+    }
+    
+    .result {
+        text-align: center;
+        font-size: 1.6rem;
+        color: #f99ae0d0;
+    }
+    
     @media only screen and (max-width: 600px) {
         .wrapper {
             padding: .5rem 1.5rem;
@@ -12,8 +93,8 @@
         }
         .heading {
             @include heading;
-            margin-bottom: .5rem;
-            font-size: 5rem;
+            margin-bottom: 2rem;
+            font-size: 2rem;
             @include text-shadow;
             -webkit-text-stroke: 1px violet;
             &-sub {
@@ -133,87 +214,6 @@
                 max-height: 100%;
             }
         }
-    }
-    
-    // GENERAL
-    .heading {
-        &-sub {
-            text-align: center;
-            font-weight: 700;
-            color: $color-purple-light;
-            &::before {
-                content: " ------ "
-            }
-            &::after {
-                content: " ------ "
-            }
-        }
-    }
-    
-    .score {
-        width: 100%;
-        padding: 0rem 1rem;
-        text-align: center;
-        &-name {
-            color: white;
-            font-size: 3rem;
-            text-transform: uppercase;
-        }
-        &-value {
-            font-size: 8rem;
-            line-height: 1;
-            color: white;
-            -webkit-text-stroke: 1px grey;
-            font-weight: 900;
-            @include text-shadow;
-        }
-    }
-    
-    .game {
-        display: grid;
-        grid-template-columns: 40% 20% 40%;
-        align-items: center;
-        text-align: center;
-        &-selection {
-            & img {
-                max-width: 100%;
-            }
-        }
-        &-vs {
-            @include heading;
-        }
-    }
-    
-    .options {
-        padding: 1rem;
-        & button {
-            border: 1px solid $color-purple-dark;
-            @include box-shadow($color-purple-darker);
-            background: #e9ecef50;
-            display: flex;
-            align-items: center;
-            padding: .5rem;
-            margin: .75rem .5rem;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-        &-start-pulse {
-            animation-name: pulse;
-            animation-timing-function: linear;
-            animation-duration: 1.5s;
-            animation-iteration-count: infinite;
-            &:hover {
-                transform: translateY(5px);
-                transform: scale(1.05);
-                border: .5rem dashed $color-purple-light;
-            }
-        }
-    }
-    
-    .result {
-        text-align: center;
-        font-size: 1.6rem;
-        color: #f99ae0d0;
     }
     
     // Animations
