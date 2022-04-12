@@ -36,8 +36,8 @@ Built with vanilla JS with an MVC design approach this application utilises SASS
 For this application, responsive design was the design approach used to create the content and page elements that would adjust smoothly between various screen sizes. Size elements were set using relative units (%) REM and EM along with setting media queries at various breakpoints to reorganise elements and components to fit the given screen space.
 
 <div display='flex'>
-<img src="/dist/img/mobileview0.png" alt="Mobile View">
-<img src="/dist/img/mobileview1.png" alt="Mobile View">
+<img src="/dist/img/mobileview0.png" alt="Mobile View" width="200">
+<img src="/dist/img/mobileview1.png" alt="Mobile View" width="200">
 </div>
 
 ## Future Features
