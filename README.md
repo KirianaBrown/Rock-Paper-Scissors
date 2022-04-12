@@ -1,14 +1,3 @@
-<h1 align='center'>
-<br>
-<a href="https://kbfunrockpaperscissors.netlify.app/"><img src="/dist/img/readme.png" alt="Rock Paper Scissors" width="200"></a>
-<br>
-ROCK
-<br>
-PAPER
-<br>
-SCISSORS
-</h1>
-
 <div align="center">
   <img src="/dist/img/logo.svg" alt="rock-paper-scissors logo" width="600">
 </div>
@@ -25,6 +14,8 @@ SCISSORS
 ## Overview
 
 An animated and interactive rock, paper, scissors game where you as the player get a chance to beat the robot to the best of 3 rounds. Take a punt on your strategy to see if you can out smart the computer.
+
+Built with vanilla JS with an MVC design approach this application utilises SASS for styling the different views.
 
 <img align='center' src="/dist/img/showcase.jpg" alt="Rock Paper Scissors">
 
