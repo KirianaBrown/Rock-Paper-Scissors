@@ -18,7 +18,6 @@ export const animateRoundWinner = (winner) => {
             { transform: "scale(1, 1) translateY(0)" },
             { transform: "scale(1, 1) translateY(0)" },
         ], {
-            // tiempos
             duration: 600,
             iterations: 1,
             easing: "ease-out",

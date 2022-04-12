@@ -2,7 +2,6 @@ import state from "./store/State";
 import {
     elements,
     optionElements,
-    optionElementsSm,
     disableButtons,
     activateButtons,
 } from "./views/base";

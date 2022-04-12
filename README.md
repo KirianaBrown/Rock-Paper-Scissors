@@ -9,19 +9,30 @@ PAPER
 SCISSORS
 </h1>
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/18d4b2e6-c6ef-4552-af80-fecc4548431d/deploy-status)](https://app.netlify.com/sites/kbfunrockpaperscissors/deploys)
+<div align="center">
+  <img src="/dist/img/logo.svg" alt="rock-paper-scissors logo" width="600">
+</div>
 
-Have some fun and challenge yourself to beat the computer in this interactive game of paper scissors rock.
+<div align="center">
+<h2>Try your luck at this interactive take on the classic rock paper scissors game!</h2>
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/18d4b2e6-c6ef-4552-af80-fecc4548431d/deploy-status)](https://app.netlify.com/sites/kbfunrockpaperscissors/deploys)
 
 [Play Now](https://kbfunrockpaperscissors.netlify.app/)
 
-<img align='center' src="/dist/img/readme.png" alt="Rock Paper Scissors">
+</div>
+
+## Overview
+
+An animated and interactive rock, paper, scissors game where you as the player get a chance to beat the robot to the best of 3 rounds. Take a punt on your strategy to see if you can out smart the computer.
+
+<img align='center' src="/dist/img/showcase.jpg" alt="Rock Paper Scissors">
 
 ## Built With
 
 - HTML
-- [SASS](https://sass-lang.com/) a preprocessor scripting language that is interpreted or compiled into CSS.
 - JS
+- [SASS](https://sass-lang.com/) a preprocessor scripting language that is interpreted or compiled into CSS.
 - [Webpack](https://webpack.js.org/) a module bundler with the purpose to bundle Javascript files.
 - [Babel](https://babeljs.io) a JavaScript transcompiler that is mainly used to convert ECMAScript 2015+ code into a backwards compatible version of JavaScript
 
