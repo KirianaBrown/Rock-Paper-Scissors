@@ -2,9 +2,9 @@ import state from "./store/State";
 import {
     elements,
     optionElements,
+    optionElementsSm,
     disableButtons,
     activateButtons,
-    // scoreElements,
 } from "./views/base";
 import { rotateImages } from "./views/rotate";
 import { updateScores } from "./views/scores";
@@ -115,9 +115,9 @@ const startNewGame = (playerName) => {
     state.playerName = playerName;
     state.isGamePlaying = true;
     formView.closeNewPlayerForm();
+    state.screenSuffix = screen.width > 600 ? "lg" : "sm";
     setPlayerSelection();
     setPlayerName(state.playerName);
-    state.screenSuffix = screen.width > 800 ? "lg" : "sm";
 };
 
 const verifyNewGame = () => {
@@ -156,8 +156,11 @@ elements.newPlayerForm.addEventListener("submit", (e) => {
 });
 
 const setPlayerSelection = () => {
+    console.log(state.screenSuffix);
+
     // Get options avaliable
     const { rock, paper, scissors } = optionElements;
+
     state.buttons = [rock, paper, scissors];
 
     // Set and handle event listeners on each option
@@ -190,7 +193,7 @@ const resetGameTable = () => {
 
     // 4. call gameplay function
     state.isGamePlaying = true;
-    state.screenSuffix = screen.width > 800 ? "lg" : "sm";
+    state.screenSuffix = screen.width > 600 ? "lg" : "sm";
 };
 
 const playAgain = () => {
@@ -215,7 +218,6 @@ const newGame = () => {
 
 document.body.addEventListener("click", (event) => {
     event.target.classList.contains("btn-playAgain") && playAgain();
-
     event.target.classList.contains("btn-newGame") && newGame();
 });
 

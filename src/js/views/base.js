@@ -24,6 +24,13 @@ export const optionElements = {
     scissors: document.querySelector(".option-03"),
 };
 
+export const optionElementsSm = {
+    // gameElements SM
+    rock: document.querySelector(".option-01-sm"),
+    paper: document.querySelector(".option-02-sm"),
+    scissors: document.querySelector(".option-03-sm"),
+};
+
 export const selectionOptionElements = {
     player: document.querySelector(".game-selection--player"),
     computer: document.querySelector(".game-selection--computer"),
