@@ -31,14 +31,27 @@ Built with vanilla JS with an MVC design approach this application utilises SASS
 
 - [Netlify](https://netlify.com) a free platform for hosting web projects
 
+## Responsive Design
+
+For this application, responsive design was the design approach used to create the content and page elements that would adjust smoothly between various screen sizes. Size elements were set using relative units (%) REM and EM along with setting media queries at various breakpoints to reorganise elements and components to fit the given screen space.
+
+<div display='flex'>
+<img src="/dist/img/mobileview0.png" alt="Mobile View">
+<img src="/dist/img/mobileview1.png" alt="Mobile View">
+</div>
+
 ## Future Features
+
+This application has the potential for future growth and improvements. Some areas and ideas that are floating around are:
 
 - Ability to play multi-player
 - Additional game options beyond rock, paper, scissors
 - Set your own round limits
 - Local storage to track players game history
 
-## 🚀 You can clone the repository and use the following commands:
+Keep an eye out in the future for some of this features being implemented.
+
+#### 🚀 You can clone the repository and use the following commands:
 
 ##### To install run
 
