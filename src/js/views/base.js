@@ -24,13 +24,6 @@ export const optionElements = {
     scissors: document.querySelector(".option-03"),
 };
 
-export const optionElementsSm = {
-    // gameElements SM
-    rock: document.querySelector(".option-01-sm"),
-    paper: document.querySelector(".option-02-sm"),
-    scissors: document.querySelector(".option-03-sm"),
-};
-
 export const selectionOptionElements = {
     player: document.querySelector(".game-selection--player"),
     computer: document.querySelector(".game-selection--computer"),
@@ -39,12 +32,9 @@ export const selectionOptionElements = {
 };
 
 export const scoreElements = {
-    playerSm: document.querySelector(".score-value--player-sm"),
-    computerSm: document.querySelector(".score-value--computer-sm"),
     playerLg: document.querySelector(".score-value--player-lg"),
     computerLg: document.querySelector(".score-value--computer-lg"),
-    playerNameSm: document.querySelector(".score-name--player-sm"),
-    computerNameSm: document.querySelector(".score-name--computer-sm"),
+
     playerNameLg: document.querySelector(".score-name--player-lg"),
     computerNameLg: document.querySelector(".score-name--computer-lg"),
 };
