@@ -115,7 +115,6 @@ const startNewGame = (playerName) => {
     state.playerName = playerName;
     state.isGamePlaying = true;
     formView.closeNewPlayerForm();
-    state.screenSuffix = screen.width > 600 ? "lg" : "sm";
     setPlayerSelection();
     setPlayerName(state.playerName);
 };
@@ -156,8 +155,6 @@ elements.newPlayerForm.addEventListener("submit", (e) => {
 });
 
 const setPlayerSelection = () => {
-    console.log(state.screenSuffix);
-
     // Get options avaliable
     const { rock, paper, scissors } = optionElements;
 
@@ -193,7 +190,6 @@ const resetGameTable = () => {
 
     // 4. call gameplay function
     state.isGamePlaying = true;
-    state.screenSuffix = screen.width > 600 ? "lg" : "sm";
 };
 
 const playAgain = () => {

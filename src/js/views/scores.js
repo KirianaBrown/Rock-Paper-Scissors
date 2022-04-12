@@ -1,18 +1,10 @@
-import { scoreElements } from "./base";
-import { elements } from "./base";
 import state from "../store/State";
+import { scoreElements } from "./base";
 
 let playerScoreElement = scoreElements.playerLg;
 let computerScoreElement = scoreElements.computerLg;
 let playerScoreName = scoreElements.playerNameLg;
 let computerScoreName = scoreElements.computerNameLg;
-
-if (state.screenSuffix === "sm") {
-    playerScoreElement = scoreElements.playerSm;
-    computerScoreElement = scoreElements.computerSm;
-    playerScoreName = scoreElements.playerNameSm;
-    computerScoreName = scoreElements.computerNameSm;
-}
 
 const playerScoreElements = [playerScoreElement, playerScoreName];
 const computerScoreElements = [computerScoreElement, computerScoreName];
@@ -69,10 +61,6 @@ function addStyle(element, color) {
 
 function setScoreText(el, score) {
     el.innerHTML = score;
-}
-
-function updateGameResultText(text) {
-    // elements.gameResult.textContent = text;
 }
 
 function counterAnimation(element) {
