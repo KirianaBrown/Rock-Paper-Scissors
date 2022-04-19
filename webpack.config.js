@@ -7,17 +7,8 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, "dist"),
         filename: "bundle.js",
+        assetModuleFilename: "src/img/[name].[ext]",
     },
-    devServer: {
-        contentBase: "./dist",
-    },
-
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: "./src/index.html",
-        }),
-    ],
-
     module: {
         rules: [{
                 test: /\.js$/,
@@ -27,14 +18,20 @@ module.exports = {
                 },
             },
             {
-                test: /\.scss$/,
-                exclude: /node_modules/,
-                use: [
-                    "style-loader", // creates style nodes from JS Nodes {
-                    "css-loader", // translates CSS into CommonJs
-                    "sass-loader", // compiles Sass into to CSS, using node sass by default
-                ],
+                test: /\.(svg|png|jpg|gif)$/,
+                use: {
+                    loader: "file-loader",
+                    options: {
+                        name: "[name].[hash].[ext]",
+                        outputPath: "imgs",
+                    },
+                },
             },
         ],
     },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: "./src/index.html",
+        }),
+    ],
 };
