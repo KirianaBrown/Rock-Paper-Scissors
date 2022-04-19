@@ -11,11 +11,10 @@ module.exports = {
     devServer: {
         // contentBase: "./dist",
         port: 3000,
+        hot: true,
         static: {
             directory: path.join(__dirname, "dist"),
         },
-
-        hot: true,
     },
 
     plugins: [
