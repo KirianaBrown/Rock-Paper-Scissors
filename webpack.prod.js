@@ -39,8 +39,8 @@ module.exports = merge(common, {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: "[name].[hash].css",
-            chunkFilename: "[id].[hash].css",
+            filename: "[name].[chunkhash].css",
+            chunkFilename: "[id].[chunkhash].css",
         }),
         new CopyWebpackPlugin({
             patterns: [{ from: "src/img", to: "img" }],
