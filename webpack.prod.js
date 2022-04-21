@@ -42,9 +42,9 @@ module.exports = merge(common, {
             filename: "[name].[chunkhash].css",
             chunkFilename: "[id].[chunkhash].css",
         }),
-        new CopyWebpackPlugin({
-            patterns: [{ from: "src/img", to: "img" }],
-        }),
+        // new CopyWebpackPlugin({
+        //     patterns: [{ from: "src/img", to: "img" }],
+        // }),
     ],
     resolve: {
         extensions: [".js", ".jsx", ".scss"],
