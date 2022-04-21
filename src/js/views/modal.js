@@ -19,9 +19,9 @@ export const createModal = (gameResults) => {
             }</h1>
 
             <div class="modal-players">
-                <img src="img/player.svg" alt="Player icon" />
+                <img src="../static/img/player.svg" alt="Player icon" />
                 <p class="modal-heading">VS</p>
-                <img src="img/robot.svg" alt="Robot icon" />
+                <img src="../static/img/robot.svg" alt="Robot icon" />
             </div>
 
             <div class="results-modal-scores">
@@ -29,13 +29,13 @@ export const createModal = (gameResults) => {
                 <p>${gameResults.computerTotal}</p>
             </div>
             <div class="results-modal-round">
-              <img src="img/player.svg" alt="robot icon" class="results-modal-round-icon" />
+              <img src="../static/img/player.svg" alt="robot icon" class="results-modal-round-icon" />
                 ${gameResults.roundResults.map((el) =>
                   generateRoundImage(el, "player")
                 )}
             </div>
             <div class="results-modal-round">
-                <img src="img/robot.svg" alt="robot icon" class="results-modal-round-icon" />
+                <img src="../static/img/robot.svg" alt="robot icon" class="results-modal-round-icon" />
                 ${gameResults.roundResults.map((el) =>
                   generateRoundImage(el, "computer")
                 )}
@@ -66,18 +66,18 @@ const generateRoundImage = (result, who) => {
 
     if (who === "player") {
         if (result.winner === "player") {
-            html = ` <img class="results-modal-round-won roundResult" src="img/${result.player}-sm.svg" alt="${result.player} icon" />
+            html = ` <img class="results-modal-round-won roundResult" src="../static/img/${result.player}-sm.svg" alt="${result.player} icon" />
     `;
         } else {
-            html = ` <img class="roundResult" src="img/${result.player}-sm.svg" alt="${result.player} icon" />
+            html = ` <img class="roundResult" src="../static/img/${result.player}-sm.svg" alt="${result.player} icon" />
     `;
         }
     } else {
         if (result.winner === "computer") {
-            html = ` <img class="results-modal-round-won roundResult" src="img/${result.computer}-sm.svg" alt="${result.computer} icon" />
+            html = ` <img class="results-modal-round-won roundResult" src="../static/img/${result.computer}-sm.svg" alt="${result.computer} icon" />
     `;
         } else {
-            html = ` <img class="roundResult" src="img/${result.computer}-sm.svg" alt="${result.computer} icon" />
+            html = ` <img class="roundResult" src="../static/img/${result.computer}-sm.svg" alt="${result.computer} icon" />
     `;
         }
     }

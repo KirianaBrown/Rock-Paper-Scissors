@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="/dist/img/logo.svg" alt="rock-paper-scissors logo" width="600">
+  <img src="/static/img/logo.svg" alt="rock-paper-scissors logo" width="600">
 </div>
 
 <div align="center">
@@ -17,7 +17,7 @@ An animated and interactive rock, paper, scissors game where you as the player g
 
 Built with vanilla JS with an MVC design approach this application utilises SASS for styling the different views.
 
-<img align='center' src="/dist/img/showcase.jpg" alt="Rock Paper Scissors">
+<img align='center' src="/static/img/showcase.jpg" alt="Rock Paper Scissors">
 
 ## Built With
 
@@ -36,8 +36,8 @@ Built with vanilla JS with an MVC design approach this application utilises SASS
 For this application, responsive design was the design approach used to create the content and page elements that would adjust smoothly between various screen sizes. Size elements were set using relative units (%) REM and EM along with setting media queries at various breakpoints to reorganise elements and components to fit the given screen space.
 
 <div display='flex'>
-<img src="/dist/img/mobileview0.png" alt="Mobile View" width="200">
-<img src="/dist/img/mobileview1.png" alt="Mobile View" width="200">
+<img src="/static/img/mobileview0.png" alt="Mobile View" width="200">
+<img src="/static/img/mobileview1.png" alt="Mobile View" width="200">
 </div>
 
 ## Future Features
